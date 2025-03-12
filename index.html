@@ -49,6 +49,18 @@
             object-fit: cover;
         }
 
+        /* Point vert "En ligne" */
+        .status-online {
+            width: 20px;
+            height: 20px;
+            background-color: #4CAF50; /* Vert Messenger */
+            border: 3px solid white; /* Pour un effet réaliste */
+            border-radius: 50%;
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+        }
+
         /* Icônes des réseaux sociaux */
         .social-icons {
             display: flex;
@@ -120,9 +132,10 @@
 <body class="bg-gray-900 text-white">
 
     <div class="container">
-        <!-- Photo sans statut -->
+        <!-- Photo avec statut "En ligne" -->
         <div class="image-container">
             <img src="/static/influenceuse.png" alt="Influenceuse IA">
+            <div class="status-online"></div> <!-- Point vert -->
         </div>
         
         <!-- Icônes des réseaux sociaux -->
