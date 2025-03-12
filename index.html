@@ -118,11 +118,30 @@
             transform: translateX(-50%);
             color: gray;
             font-size: 0.8rem;
+            text-align: center;
+            width: 100%;
         }
 
         /* Ajouter une couleur jaune pour Paris, France */
         .city {
             color: #facc15; /* Couleur jaune de Tailwind CSS (amber-400) */
+        }
+
+        /* Style pour le pied de page */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: gray;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
         }
     </style>
 </head>
@@ -165,7 +184,13 @@
 
     <!-- Pied de page -->
     <footer>
-        © 2025 - Anna Morelle | <a href="/mentions-legales" class="text-gray-400">Mentions légales</a>
+        <div>
+            © 2025 - Anna Morelle
+        </div>
+        <div class="footer-links">
+            <a href="/mentions-legales" class="text-gray-400">Mentions légales</a> |
+            <a href="/remboursement" class="text-gray-400">Remboursement</a>
+        </div>
     </footer>
 
 </body>
