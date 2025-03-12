@@ -31,14 +31,15 @@
             text-align: center;
         }
 
-        /* Image de profil sans bordure */
+        /* Image de profil plus grande et repositionnée */
         .image-container {
-            width: 150px;
-            height: 150px;
+            width: 180px; /* Augmenté de 150px à 180px */
+            height: 180px;
             border-radius: 50%;
             position: relative;
             overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 5px; /* Moins d'espace en dessous */
+            margin-top: -20px; /* Remonté légèrement */
         }
 
         .image-container img {
@@ -48,15 +49,15 @@
             border-radius: 50%;
         }
 
-        /* Point vert "En ligne" amélioré */
+        /* Point vert "En ligne" bien visible */
         .status-online {
             width: 20px; /* Taille plus grande */
             height: 20px;
             background-color: #4CAF50; /* Vert Messenger */
             border-radius: 50%;
             position: absolute;
-            bottom: 5px;
-            right: 5px;
+            bottom: 10px; /* Ajusté */
+            right: 10px; /* Ajusté */
             border: 3px solid white; /* Bordure blanche pour visibilité */
         }
 
