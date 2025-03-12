@@ -32,7 +32,7 @@
             text-align: center;
         }
 
-        /* Image de profil avec bordure autour */
+        /* Image de profil avec bordure dégradée autour */
         .image-container {
             width: 250px; /* Taille de l'image */
             height: 250px;
@@ -41,8 +41,9 @@
             overflow: hidden;
             margin-bottom: 40px; /* Moins d'espace en dessous */
             margin-top: -70px; /* Remonté légèrement */
-            border: 8px solid transparent; /* Bordure transparente */
-            box-shadow: 0 0 0 8px #ff0080, 0 0 0 16px #ff8c00, 0 0 0 24px #ffbc00; /* Ombre de bordure avec dégradé */
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #ffbc00); /* Dégradé rose, orange, jaune */
+            padding: 8px; /* Espace entre l'image et la bordure */
+            box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1); /* Ombre légère autour de la bordure */
         }
 
         .image-container img {
@@ -128,7 +129,7 @@
 <body class="bg-gray-900 text-white">
 
     <div class="container">
-        <!-- Photo avec bordure autour -->
+        <!-- Photo avec bordure dégradée autour -->
         <div class="image-container">
             <img src="/static/influenceuse.png" alt="Influenceuse IA">
         </div>
