@@ -92,7 +92,23 @@
             word-wrap: break-word;
         }
 
-        /* Bouton d'abonnement */
+        /* Animation Pulsing */
+        @keyframes pulsing {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(0, 120, 255, 0.6);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 25px rgba(0, 120, 255, 0.8);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(0, 120, 255, 0.6);
+            }
+        }
+
+        /* Application de l'effet pulsing au bouton d'abonnement */
         .subscribe-btn {
             background-color: #0078FF;
             padding: 10px 20px;
@@ -104,10 +120,12 @@
             display: inline-block;
             margin-top: 5px;
             transition: background 0.3s ease;
+            animation: pulsing 1.5s infinite; /* Ajoute l'animation pulsing ici */
         }
 
         .subscribe-btn:hover {
             background-color: #005bb5;
+            animation: none; /* Arrête l'animation quand le bouton est survolé */
         }
 
         /* Pied de page fixe */
