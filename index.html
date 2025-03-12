@@ -9,140 +9,143 @@
     <meta property="og:url" content="https://annamorelle.me" />
     <meta name="twitter:card" content="summary_large_image" />
     <title>🍑 Le Coin Premium d'Anna 💗 - Anna Morelle</title>
+    
+    <!-- Styles -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
-    
-    <!-- Favicon standard -->
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon32.png">
     <link rel="icon" type="image/png" sizes="48x48" href="/static/favicon48.png">
-
-    <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon180.png">
-
-    <!-- Android Chrome -->
     <link rel="icon" type="image/png" sizes="192x192" href="/static/favicon192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/static/favicon512.png">
-
-    <!-- Manifest pour Web App -->
     <link rel="manifest" href="/static/site.webmanifest">
 
-    <header class="bg-transparent text-white fixed top-0 left-0 w-full flex justify-between items-center p-4 shadow-lg z-50">
-        <!-- Logo (supprimé) -->
-        
-        <!-- Bouton Menu (entouré d'un cercle rose) -->
-        <button id="menu-toggle" class="text-white text-2xl focus:outline-none transition-transform duration-300 p-4 border-4 border-pink-500 rounded-full">
-            &#9776;
-        </button>
-        
-        <!-- Menu Déroulant -->
-        <nav id="menu" class="fixed top-0 right-0 h-full w-64 bg-black bg-opacity-95 text-white flex flex-col items-center justify-center space-y-6 transform translate-x-full transition-transform duration-500">
-            <a href="/" class="menu-link">Accueil</a>
-            <a href="/conditions-generales" class="menu-link">Conditions de service</a>
-            <a href="/politiques-de-confidentialite" class="menu-link">Avis de confidentialité</a>
-            <a href="/politique-de-remboursement" class="menu-link">Politiques de remboursement</a>
-            <a href="/contact" class="menu-link">Contact</a>
-            <a href="/faq" class="menu-link">FAQ</a>
-        </nav>
-    </header>
-
     <style>
-        /* Animation du menu */
-        .menu-link {
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
+        /* En-tête */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 50;
+            background: transparent;
+        }
+
+        /* Bouton menu entouré d'un cercle rose */
+        .menu-button {
+            font-size: 24px;
+            padding: 10px;
+            border: 3px solid #ff007f;
+            border-radius: 50%;
             color: white;
-            position: relative;
+            background: transparent;
+            transition: transform 0.3s ease-in-out;
+        }
+        .menu-button:hover {
+            transform: rotate(90deg);
+        }
+
+        /* Menu déroulant */
+        .menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 250px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: right 0.4s ease-in-out;
+        }
+        .menu a {
+            font-size: 18px;
+            color: white;
+            margin: 10px 0;
+            text-decoration: none;
             transition: color 0.3s;
         }
-        .menu-link:hover {
+        .menu a:hover {
             color: #ff007f;
         }
-        .menu-link::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            bottom: -5px;
-            width: 0;
-            height: 2px;
-            background: #ff007f;
-            transition: width 0.3s, left 0.3s;
-        }
-        .menu-link:hover::after {
-            width: 100%;
-            left: 0;
-        }
-    </style>
 
-    <script>
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            let menu = document.getElementById('menu');
-            if (menu.classList.contains('translate-x-full')) {
-                menu.classList.remove('translate-x-full');
-                this.style.transform = 'rotate(90deg)';
-            } else {
-                menu.classList.add('translate-x-full');
-                this.style.transform = 'rotate(0deg)';
-            }
-        });
-    </script>
-    
-    <style>
-        /* Empêcher tout défilement */
-        html, body {
-            overflow: hidden;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            background-color: #111; /* Fond sombre pour faire ressortir la bordure */
+        /* Affichage du menu */
+        .menu.open {
+            right: 0;
+        }
+
+        /* Espace pour le contenu principal */
+        .content {
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        /* Pied de page */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #bbb;
+            font-size: 14px;
         }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
+    
+    <!-- En-tête -->
+    <header class="header">
+        <h1 class="text-pink-500 text-2xl font-bold">QUEEN ANNA</h1>
+        <button id="menu-toggle" class="menu-button">&#9776;</button>
+    </header>
 
-    <div class="container">
-        <!-- Photo avec bordure dégradée autour -->
-        <div class="image-container">
-            <img src="/static/influenceuse.png" alt="Influenceuse IA">
-        </div>
+    <!-- Menu déroulant -->
+    <nav id="menu" class="menu">
+        <a href="/">Accueil</a>
+        <a href="/conditions-generales">Conditions de service</a>
+        <a href="/politiques-de-confidentialite">Avis de confidentialité</a>
+        <a href="/politique-de-remboursement">Politiques de remboursement</a>
+        <a href="/contact">Contact</a>
+        <a href="/faq">FAQ</a>
+    </nav>
+
+    <!-- Contenu principal -->
+    <div class="content">
+        <img src="/static/influenceuse.png" alt="Influenceuse Anna" class="mx-auto rounded-lg shadow-lg">
         
-        <!-- Icônes des réseaux sociaux dans l'ordre souhaité -->
-        <div class="social-icons">
-            <a href="https://t.me/+jtyRj1IY9Gs0ZGM8" target="_blank" class="fab fa-telegram"></a> <!-- Telegram -->
-            <a href="https://www.instagram.com/ladymorellee" target="_blank" class="fab fa-instagram"></a> <!-- Instagram -->
-            <a href="https://x.com/aannagram" target="_blank" class="fab fa-twitter"></a> <!-- Twitter -->
-            <a href="https://youtube.com/@aannagram" target="_blank" class="fab fa-youtube"></a> <!-- YouTube -->
+        <h1 class="text-3xl font-bold mt-4">Anna Morelle</h1>
+        <p class="mt-2 text-gray-300">Paris, France • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong></p>
+        
+        <p class="mt-4 text-lg">Prêt à découvrir un univers exclusif ? ✨ Chaque jour, profite de contenus uniques et immersifs 🔥.</p>
+        
+        <a href="https://t.me/annaverifybot" class="mt-6 px-6 py-3 bg-pink-500 text-white rounded-full text-lg shadow-lg hover:bg-pink-600 transition">S’abonner maintenant</a>
+        
+        <!-- Réseaux sociaux -->
+        <div class="mt-6 space-x-4">
+            <a href="https://t.me/+jtyRj1IY9Gs0ZGM8" class="text-xl text-white hover:text-blue-400"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.instagram.com/ladymorellee" class="text-xl text-white hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/aannagram" class="text-xl text-white hover:text-blue-500"><i class="fab fa-twitter"></i></a>
+            <a href="https://youtube.com/@aannagram" class="text-xl text-white hover:text-red-500"><i class="fab fa-youtube"></i></a>
         </div>
-
-        <!-- Nom et badge -->
-        <h1 class="text-2xl font-bold mt-3 inline-flex items-center gap-2">
-            Anna Morelle
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Vérifié" class="verified-badge">
-        </h1>
-
-        <!-- Info -->
-        <div class="info-line">
-            <span class="city">Paris, France </span> • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong>
-        </div>
-
-        <!-- Texte d'introduction -->
-        <p class="intro-text">
-          Prêt à découvrir un univers exclusif ? ✨ Chaque jour, profite de contenus uniques et immersifs 🔥. Laisse-toi emporter par l’expérience et vis des moments intenses 😏. Rejoins-moi maintenant ❤️.
-        </p>
-
-        <!-- Bouton d'abonnement -->
-        <a href="https://t.me/annaverifybot" class="subscribe-btn">
-            S’abonner maintenant
-        </a>
     </div>
 
     <!-- Pied de page -->
     <footer>
-        <div class="footer-text">
-            © 2025 - Anna Morelle
-        </div>
+        © 2025 - Anna Morelle
     </footer>
+
+    <!-- Script pour le menu -->
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('open');
+        });
+    </script>
 
 </body>
 </html>
