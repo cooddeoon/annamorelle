@@ -49,18 +49,6 @@
             border-radius: 50%;
         }
 
-        /* Point vert "En ligne" bien visible */
-        .status-online {
-            width: 30px; /* Augmenter la taille */
-            height: 30px; /* Augmenter la taille */
-            background-color: #4CAF50; /* Vert Messenger */
-            border-radius: 50%;
-            position: absolute;
-            bottom: 5px; /* Ajuster la position */
-            right: 5px; /* Ajuster la position */
-            border: 5px solid white; /* Bordure blanche pour visibilité */
-        }
-
         /* Icônes des réseaux sociaux */
         .social-icons {
             display: flex;
@@ -127,15 +115,19 @@
             color: gray;
             font-size: 0.8rem;
         }
+
+        /* Ajouter une couleur jaune pour Paris, France */
+        .city {
+            color: #facc15; /* Couleur jaune de Tailwind CSS (amber-400) */
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
 
     <div class="container">
-        <!-- Photo sans bordure mais avec statut "En ligne" -->
+        <!-- Photo sans bordure mais sans statut "En ligne" -->
         <div class="image-container">
             <img src="/static/influenceuse.png" alt="Influenceuse IA">
-            <div class="status-online"></div> <!-- Point vert bien visible -->
         </div>
         
         <!-- Icônes des réseaux sociaux -->
@@ -153,7 +145,7 @@
 
         <!-- Info -->
         <div class="info-line">
-            Paris, France 🇫🇷 • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong>
+            <span class="city">Paris, France </span> • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong>
         </div>
 
         <!-- Texte d'introduction -->
