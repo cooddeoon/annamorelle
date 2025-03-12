@@ -77,17 +77,18 @@
             transform: translateX(-50%);
             pointer-events: none;
             z-index: 1;
+            width: 100%;
         }
 
         .heart {
-            font-size: 1.5rem;
+            font-size: 2rem;
             position: absolute;
             animation: fall 5s linear infinite; /* Animations des cœurs tombants */
         }
 
         @keyframes fall {
             0% {
-                top: -5%;
+                top: -10%;
                 opacity: 1;
                 transform: translateX(0) rotate(0);
             }
@@ -170,11 +171,11 @@
     <div class="container">
         <!-- Cœurs tombant du haut -->
         <div class="falling-hearts">
-            <span class="heart">💗</span>
-            <span class="heart">💗</span>
-            <span class="heart">💗</span>
-            <span class="heart">💗</span>
-            <span class="heart">💗</span>
+            <span class="heart" style="left: 10%;">💗</span>
+            <span class="heart" style="left: 30%;">💗</span>
+            <span class="heart" style="left: 50%;">💗</span>
+            <span class="heart" style="left: 70%;">💗</span>
+            <span class="heart" style="left: 90%;">💗</span>
         </div>
 
         <!-- Photo avec bordure dégradée autour -->
