@@ -13,25 +13,25 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
         html, body {
-            overflow: hidden;
-            height: 100vh;
             margin: 0;
             padding: 0;
             background-color: #111;
             color: white;
             font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 20px;
-            overflow-y: auto;
         }
 
         .container h1, .container h2 {
@@ -63,14 +63,10 @@
         }
 
         footer {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+            text-align: center;
             color: gray;
             font-size: 0.8rem;
-            text-align: center;
-            width: 100%;
+            padding: 10px 0;
         }
     </style>
 </head>
@@ -88,12 +84,12 @@
             </p>
 
             <h2>Auteur de la publication</h2>
-<p>Le responsable de la publication du site <strong>https://annamorelle.me</strong> est <strong>Anna Morelle</strong>, créatrice de contenu exclusif et influenceuse. Pour toute question concernant le contenu du site, les abonnements ou toute autre demande, vous pouvez la contacter par email à l'adresse <a href="mailto:contact@annamorelle.com"><strong>contact@annamorelle.com</strong></a>. Anna Morelle réside à Paris, France, et gère l'ensemble des activités liées à ce site numérique. Aucune adresse physique spécifique n'est nécessaire pour l'accès ou l'abonnement.</p>
+            <p>Le responsable de la publication du site <strong>https://annamorelle.me</strong> est <strong>Anna Morelle</strong>, créatrice de contenu exclusif et influenceuse. Pour toute question concernant le contenu du site, les abonnements ou toute autre demande, vous pouvez la contacter par email à l'adresse <a href="mailto:contact@annamorelle.com"><strong>contact@annamorelle.com</strong></a>. Anna Morelle réside à Paris, France, et gère l'ensemble des activités liées à ce site numérique. Aucune adresse physique spécifique n'est nécessaire pour l'accès ou l'abonnement.</p>
             
             <h2>Hébergeur du site</h2>
-Hébergeur : GitHub, Inc.<br>
-Adresse : 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br>
-Téléphone : Non fourni (GitHub est une plateforme basée sur le cloud et ne fournit pas de support par téléphone pour les utilisateurs standards).</p>
+            <p>Hébergeur : GitHub, Inc.<br>
+            Adresse : 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br>
+            Téléphone : Non fourni (GitHub est une plateforme basée sur le cloud et ne fournit pas de support par téléphone pour les utilisateurs standards).</p>
 
             <h2>Propriété intellectuelle</h2>
             <p>
@@ -116,11 +112,4 @@ Téléphone : Non fourni (GitHub est une plateforme basée sur le cloud et ne fo
         </div>
     </div>
 
-    <footer>
-        <div>
-            © 2025 - Anna Morelle
-        </div>
-    </footer>
-
-</body>
-</html>
+    <
