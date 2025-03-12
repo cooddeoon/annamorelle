@@ -9,143 +9,232 @@
     <meta property="og:url" content="https://annamorelle.me" />
     <meta name="twitter:card" content="summary_large_image" />
     <title>🍑 Le Coin Premium d'Anna 💗 - Anna Morelle</title>
-    
-    <!-- Styles -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
-
-    <!-- Favicon -->
+    
+    <!-- Favicon standard -->
     <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon32.png">
     <link rel="icon" type="image/png" sizes="48x48" href="/static/favicon48.png">
+
+    <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon180.png">
+
+    <!-- Android Chrome -->
     <link rel="icon" type="image/png" sizes="192x192" href="/static/favicon192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/static/favicon512.png">
+
+    <!-- Manifest pour Web App -->
     <link rel="manifest" href="/static/site.webmanifest">
 
+    <header class="bg-black text-white fixed top-0 left-0 w-full flex justify-center items-center p-4 shadow-lg z-50">
+    <!-- Bouton Menu -->
+    <button id="menu-toggle" class="text-white text-2xl focus:outline-none transition-transform duration-300">
+        &#9776;
+    </button>
+
     <style>
-        /* En-tête */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            z-index: 50;
-            background: transparent;
-        }
-
-        /* Bouton menu entouré d'un cercle rose */
-        .menu-button {
-            font-size: 24px;
-            padding: 10px;
-            border: 3px solid #ff007f;
-            border-radius: 50%;
-            color: white;
-            background: transparent;
-            transition: transform 0.3s ease-in-out;
-        }
-        .menu-button:hover {
-            transform: rotate(90deg);
-        }
-
-        /* Menu déroulant */
-        .menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 250px;
+        /* Empêcher tout défilement */
+        html, body {
+            overflow: hidden;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.95);
+            margin: 0;
+            padding: 0;
+            background-color: #111; /* Fond sombre pour faire ressortir la bordure */
+        }
+
+        /* Conteneur principal */
+        .container {
+            width: 100vw;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: right 0.4s ease-in-out;
+            text-align: center;
         }
-        .menu a {
-            font-size: 18px;
+
+        /* Image de profil avec bordure dégradée autour */
+        .image-container {
+            width: 250px; /* Taille de l'image */
+            height: 250px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px; /* Moins d'espace en dessous */
+            margin-top: -10px; /* Remonté légèrement */
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #ffbc00); /* Dégradé rose, orange, jaune */
+            padding: 8px; /* Espace entre l'image et la bordure */
+            box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1); /* Ombre légère autour de la bordure */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Icônes des réseaux sociaux */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .social-icons a {
             color: white;
-            margin: 10px 0;
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        /* Badge de vérification */
+        .verified-badge {
+            width: 25px;
+            height: 25px;
+        }
+
+        /* Infos */
+        .info-line {
+            color: gray;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        /* Texte d'introduction */
+        .intro-text {
+            font-size: 0.75rem;
+            line-height: 1.4;
+            max-width: 70%;
+            margin: 10px auto;
+            word-wrap: break-word;
+        }
+
+        /* Animation Pulsing */
+        @keyframes pulsing {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(0, 120, 255, 0.6);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 25px rgba(0, 120, 255, 0.8);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(0, 120, 255, 0.6);
+            }
+        }
+
+        /* Application de l'effet pulsing au bouton d'abonnement */
+        .subscribe-btn {
+            background-color: #ff007f;
+            padding: 10px 20px;
+            border-radius: 8px;
             text-decoration: none;
-            transition: color 0.3s;
-        }
-        .menu a:hover {
-            color: #ff007f;
-        }
-
-        /* Affichage du menu */
-        .menu.open {
-            right: 0;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+            transition: background 0.3s ease;
+            animation: pulsing 1.5s infinite; /* Ajoute l'animation pulsing ici */
         }
 
-        /* Espace pour le contenu principal */
-        .content {
-            margin-top: 80px;
-            text-align: center;
+        .subscribe-btn:hover {
+            background-color: #e6006c;
+            animation: none; /* Arrête l'animation quand le bouton est survolé */
         }
 
-        /* Pied de page */
+        /* Pied de page fixe */
         footer {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: gray;
+            font-size: 0.8rem;
             text-align: center;
-            margin-top: 50px;
-            color: #bbb;
-            font-size: 14px;
+            width: 100%;
+        }
+
+        /* Ajouter une couleur jaune pour Paris, France */
+        .city {
+            color: #facc15; /* Couleur jaune de Tailwind CSS (amber-400) */
+        }
+
+        /* Style pour le pied de page */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: gray;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Ajout d'un espacement entre le texte "© 2025" et les liens */
+        .footer-text {
+            margin-bottom: -10px; /* Espace supplémentaire entre le texte et les liens */
+            margin-top: 10px; /* Espace supplémentaire au-dessus de "© 2025 - Anna Morelle" */
         }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
-    
-    <!-- En-tête -->
-    <header class="header">
-        <h1 class="text-pink-500 text-2xl font-bold">QUEEN ANNA</h1>
-        <button id="menu-toggle" class="menu-button">&#9776;</button>
-    </header>
 
-    <!-- Menu déroulant -->
-    <nav id="menu" class="menu">
-        <a href="/">Accueil</a>
-        <a href="/conditions-generales">Conditions de service</a>
-        <a href="/politiques-de-confidentialite">Avis de confidentialité</a>
-        <a href="/politique-de-remboursement">Politiques de remboursement</a>
-        <a href="/contact">Contact</a>
-        <a href="/faq">FAQ</a>
-    </nav>
-
-    <!-- Contenu principal -->
-    <div class="content">
-        <img src="/static/influenceuse.png" alt="Influenceuse Anna" class="mx-auto rounded-lg shadow-lg">
-        
-        <h1 class="text-3xl font-bold mt-4">Anna Morelle</h1>
-        <p class="mt-2 text-gray-300">Paris, France • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong></p>
-        
-        <p class="mt-4 text-lg">Prêt à découvrir un univers exclusif ? ✨ Chaque jour, profite de contenus uniques et immersifs 🔥.</p>
-        
-        <a href="https://t.me/annaverifybot" class="mt-6 px-6 py-3 bg-pink-500 text-white rounded-full text-lg shadow-lg hover:bg-pink-600 transition">S’abonner maintenant</a>
-        
-        <!-- Réseaux sociaux -->
-        <div class="mt-6 space-x-4">
-            <a href="https://t.me/+jtyRj1IY9Gs0ZGM8" class="text-xl text-white hover:text-blue-400"><i class="fab fa-telegram"></i></a>
-            <a href="https://www.instagram.com/ladymorellee" class="text-xl text-white hover:text-pink-500"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/aannagram" class="text-xl text-white hover:text-blue-500"><i class="fab fa-twitter"></i></a>
-            <a href="https://youtube.com/@aannagram" class="text-xl text-white hover:text-red-500"><i class="fab fa-youtube"></i></a>
+    <div class="container">
+        <!-- Photo avec bordure dégradée autour -->
+        <div class="image-container">
+            <img src="/static/influenceuse.png" alt="Influenceuse IA">
         </div>
+        
+        <!-- Icônes des réseaux sociaux dans l'ordre souhaité -->
+        <div class="social-icons">
+            <a href="https://t.me/+jtyRj1IY9Gs0ZGM8" target="_blank" class="fab fa-telegram"></a> <!-- Telegram -->
+            <a href="https://www.instagram.com/ladymorellee" target="_blank" class="fab fa-instagram"></a> <!-- Instagram -->
+            <a href="https://x.com/aannagram" target="_blank" class="fab fa-twitter"></a> <!-- Twitter -->
+            <a href="https://youtube.com/@aannagram" target="_blank" class="fab fa-youtube"></a> <!-- YouTube -->
+        </div>
+
+        <!-- Nom et badge -->
+        <h1 class="text-2xl font-bold mt-3 inline-flex items-center gap-2">
+            Anna Morelle
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Vérifié" class="verified-badge">
+        </h1>
+
+        <!-- Info -->
+        <div class="info-line">
+            <span class="city">Paris, France </span> • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong>
+        </div>
+
+        <!-- Texte d'introduction -->
+        <p class="intro-text">
+          Prêt à découvrir un univers exclusif ? ✨ Chaque jour, profite de contenus uniques et immersifs 🔥. Laisse-toi emporter par l’expérience et vis des moments intenses 😏. Rejoins-moi maintenant ❤️.
+        </p>
+
+        <!-- Bouton d'abonnement -->
+        <a href="https://t.me/annaverifybot" class="subscribe-btn">
+            S’abonner maintenant
+        </a>
     </div>
 
     <!-- Pied de page -->
     <footer>
-        © 2025 - Anna Morelle
+        <div class="footer-text">
+            © 2025 - Anna Morelle
+        </div>
     </footer>
-
-    <!-- Script pour le menu -->
-    <script>
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            document.getElementById('menu').classList.toggle('open');
-        });
-    </script>
 
 </body>
 </html>
