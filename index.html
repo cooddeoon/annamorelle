@@ -8,20 +8,20 @@
     <meta property="og:image" content="URL_de_l_image" />
     <meta property="og:url" content="https://annamorelle.me" />
     <meta name="twitter:card" content="summary_large_image" />
-    <title>Mentions légales - Anna Morelle</title>
+    <title>🍑 Le Coin Premium d'Anna 💗 - Anna Morelle</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
     <style>
+        /* Empêcher tout défilement */
         html, body {
             overflow: hidden;
             height: 100vh;
             margin: 0;
             padding: 0;
-            background-color: #111;
-            color: white;
-            font-family: Arial, sans-serif;
+            background-color: #111; /* Fond sombre pour faire ressortir la bordure */
         }
 
+        /* Conteneur principal */
         .container {
             width: 100vw;
             height: 100vh;
@@ -30,38 +30,105 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 20px;
-            overflow-y: auto;
         }
 
-        .container h1, .container h2 {
-            font-size: 2rem;
-            color: #ff007f;
-            margin-bottom: 20px;
+        /* Image de profil avec bordure dégradée autour */
+        .image-container {
+            width: 250px; /* Taille de l'image */
+            height: 250px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px; /* Moins d'espace en dessous */
+            margin-top: -70px; /* Remonté légèrement */
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #ffbc00); /* Dégradé rose, orange, jaune */
+            padding: 8px; /* Espace entre l'image et la bordure */
+            box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1); /* Ombre légère autour de la bordure */
         }
 
-        .content {
-            max-width: 800px;
-            text-align: left;
-            line-height: 1.6;
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
-        .footer-links {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: gray;
+        /* Icônes des réseaux sociaux */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
         }
 
-        .footer-links a {
-            color: gray;
-            text-decoration: none;
-            margin-right: 15px;
-        }
-
-        .footer-links a:hover {
+        .social-icons a {
             color: white;
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
         }
 
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        /* Badge de vérification */
+        .verified-badge {
+            width: 25px;
+            height: 25px;
+        }
+
+        /* Infos */
+        .info-line {
+            color: gray;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        /* Texte d'introduction */
+        .intro-text {
+            font-size: 0.75rem;
+            line-height: 1.4;
+            max-width: 70%;
+            margin: 10px auto;
+            word-wrap: break-word;
+        }
+
+        /* Animation Pulsing */
+        @keyframes pulsing {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(0, 120, 255, 0.6);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 25px rgba(0, 120, 255, 0.8);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(0, 120, 255, 0.6);
+            }
+        }
+
+        /* Application de l'effet pulsing au bouton d'abonnement */
+        .subscribe-btn {
+            background-color: #ff007f;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+            transition: background 0.3s ease;
+            animation: pulsing 1.5s infinite; /* Ajoute l'animation pulsing ici */
+        }
+
+        .subscribe-btn:hover {
+            background-color: #e6006c;
+            animation: none; /* Arrête l'animation quand le bouton est survolé */
+        }
+
+        /* Pied de page fixe */
         footer {
             position: absolute;
             bottom: 10px;
@@ -72,72 +139,82 @@
             text-align: center;
             width: 100%;
         }
+
+        /* Ajouter une couleur jaune pour Paris, France */
+        .city {
+            color: #facc15; /* Couleur jaune de Tailwind CSS (amber-400) */
+        }
+
+        /* Style pour le pied de page */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: gray;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Ajout d'un espacement entre le texte "© 2025" et les liens */
+        .footer-text {
+            margin-bottom: -10px; /* Espace supplémentaire entre le texte et les liens */
+            margin-top: 10px; /* Espace supplémentaire au-dessus de "© 2025 - Anna Morelle" */
+        }
     </style>
 </head>
-<body class="bg-gray-900">
+<body class="bg-gray-900 text-white">
 
     <div class="container">
-        <h1>Mentions légales</h1>
-
-        <div class="content">
-            <h2>Identification de l'éditeur du site</h2>
-            <p>
-                Nom : Anna Morelle<br>
-                Adresse : [Votre adresse complète]<br>
-                Téléphone : [Votre numéro de téléphone]<br>
-                Email : [Votre email de contact]<br>
-                Numéro d'enregistrement au RCS : [Votre numéro RCS]<br>
-                Numéro de TVA intracommunautaire : [Votre numéro TVA]
-            </p>
-
-            <h2>Responsable de la publication</h2>
-            <p>
-                Responsable de la publication : Anna Morelle<br>
-                Email : [Votre email de contact pour la publication]
-            </p>
-
-            <h2>Hébergeur du site</h2>
-            <p>
-                Hébergeur : [Nom de l'hébergeur]<br>
-                Adresse : [Adresse de l'hébergeur]<br>
-                Téléphone : [Numéro de téléphone de l'hébergeur]
-            </p>
-
-            <h2>Propriété intellectuelle</h2>
-            <p>
-                Tout le contenu du site est protégé par des droits de propriété intellectuelle. L'utilisation des contenus (textes, images, vidéos, etc.) est strictement réservée à un usage personnel et privé. Toute reproduction ou distribution sans autorisation est interdite.
-            </p>
-
-            <h2>Conditions générales d’utilisation (CGU)</h2>
-            <p>
-                L'abonnement au service d'accès au canal privé Telegram est soumis à un paiement via la plateforme Paddle.<br>
-                L'accès au canal privé est réservé aux abonnés payants.<br>
-                Nous nous réservons le droit de suspendre l'accès en cas de non-paiement ou d'abonnement non-renouvelé.<br>
-                L'utilisateur est responsable de l'utilisation de ses identifiants de paiement sur Paddle.
-            </p>
-
-            <h2>Droits des utilisateurs</h2>
-            <p>
-                Conformément au RGPD, les utilisateurs ont les droits suivants sur leurs données personnelles :<br>
-                Droit d’accès, de rectification, de suppression, et d’opposition.<br>
-                Pour exercer vos droits, contactez-nous à [votre adresse email].
-            </p>
-
-            <h2>Remboursement</h2>
-            <p>
-                Les paiements effectués via Paddle sont non remboursables, sauf en cas de non-fourniture des services. Pour toute question ou demande, contactez-nous à [votre adresse email].
-            </p>
+        <!-- Photo avec bordure dégradée autour -->
+        <div class="image-container">
+            <img src="/static/influenceuse.png" alt="Influenceuse IA">
+        </div>
+        
+        <!-- Icônes des réseaux sociaux dans l'ordre souhaité -->
+        <div class="social-icons">
+            <a href="https://t.me/+jtyRj1IY9Gs0ZGM8" target="_blank" class="fab fa-telegram"></a> <!-- Telegram -->
+            <a href="https://www.instagram.com/ladymorellee" target="_blank" class="fab fa-instagram"></a> <!-- Instagram -->
+            <a href="https://x.com/aannagram" target="_blank" class="fab fa-twitter"></a> <!-- Twitter -->
+            <a href="https://youtube.com/@aannagram" target="_blank" class="fab fa-youtube"></a> <!-- YouTube -->
         </div>
 
-        <div class="footer-links">
-            <a href="/" class="text-gray-400">Retour à l'accueil</a>
-            <a href="/remboursement" class="text-gray-400">Remboursement</a>
+        <!-- Nom et badge -->
+        <h1 class="text-2xl font-bold mt-3 inline-flex items-center gap-2">
+            Anna Morelle
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Vérifié" class="verified-badge">
+        </h1>
+
+        <!-- Info -->
+        <div class="info-line">
+            <span class="city">Paris, France </span> • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong>
         </div>
+
+        <!-- Texte d'introduction -->
+        <p class="intro-text">
+          Prêt à découvrir un univers exclusif ? ✨ Chaque jour, profite de contenus uniques et immersifs 🔥. Laisse-toi emporter par l’expérience et vis des moments intenses 😏. Rejoins-moi maintenant ❤️.
+        </p>
+
+        <!-- Bouton d'abonnement -->
+        <a href="https://t.me/annaverifybot" class="subscribe-btn">
+            S’abonner maintenant
+        </a>
     </div>
 
+    <!-- Pied de page -->
     <footer>
-        <div>
+        <div class="footer-text">
             © 2025 - Anna Morelle
+        </div>
+        <div class="footer-links">
+            <a href="/mentions-legales" class="text-gray-400">Mentions légales</a> |
+            <a href="/remboursement" class="text-gray-400">Remboursement</a>
         </div>
     </footer>
 
