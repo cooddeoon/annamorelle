@@ -13,14 +13,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/static/favicon192.png">
     <link rel="manifest" href="/static/site.webmanifest">
 
     <style>
-        /* Empêcher le défilement */
+        /* 🔹 Empêcher le défilement et fond sombre */
         html, body {
             overflow: hidden;
             height: 100vh;
@@ -29,7 +27,7 @@
             background-color: #111;
         }
 
-        /* Conteneur principal centré */
+        /* 🔹 Conteneur principal */
         .container {
             width: 100vw;
             height: 100vh;
@@ -40,111 +38,116 @@
             text-align: center;
         }
 
-        /* Bouton du menu (3 barres entourées d'un cercle rose stylé) */
-        .menu-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: transparent;
-            border: 2px solid white;
+        /* 🔹 Photo avec effet bordure dégradée */
+        .image-container {
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease-in-out;
-            border-image: linear-gradient(to right, #ff007f, #ff8c00) 1;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #ffbc00);
+            padding: 5px;
+            box-shadow: 0 0 15px rgba(255, 120, 255, 0.3);
         }
 
-        .menu-button i {
-            font-size: 24px;
-            color: white;
-        }
-
-        /* Menu déroulant en plein écran */
-        .menu {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .image-container img {
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* 🔹 Icônes des réseaux sociaux */
+        .social-icons {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            gap: 15px;
             justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.5s ease;
         }
 
-        /* Quand le menu est actif */
-        .menu.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Liens du menu stylés */
-        .menu a {
+        .social-icons a {
             color: white;
-            font-size: 2rem;
-            margin: 15px 0;
-            text-decoration: none;
-            font-weight: bold;
-            position: relative;
-            transition: color 0.3s;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
         }
 
-        /* Animation de soulignement */
-        .menu a::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            bottom: -5px;
-            width: 0;
-            height: 3px;
-            background: #ff007f;
-            transition: all 0.3s ease-in-out;
-            transform: translateX(-50%);
-        }
-
-        /* Effet au survol */
-        .menu a:hover {
+        .social-icons a:hover {
+            transform: scale(1.2);
             color: #ff007f;
         }
 
-        .menu a:hover::after {
+        /* 🔹 Badge de vérification */
+        .verified-badge {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* 🔹 Informations (ville, followers) */
+        .info-line {
+            color: gray;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        /* 🔹 Texte d'introduction */
+        .intro-text {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            max-width: 70%;
+            margin: 10px auto;
+            word-wrap: break-word;
+        }
+
+        /* 🔹 Animation du bouton */
+        @keyframes pulsing {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 127, 0.6); }
+            50% { transform: scale(1.1); box-shadow: 0 0 25px rgba(255, 0, 127, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 127, 0.6); }
+        }
+
+        /* 🔹 Bouton d'abonnement */
+        .subscribe-btn {
+            background-color: #ff007f;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+            animation: pulsing 1.5s infinite;
+        }
+
+        .subscribe-btn:hover {
+            background-color: #e6006c;
+            animation: none;
+        }
+
+        /* 🔹 Pied de page */
+        footer {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: gray;
+            font-size: 0.8rem;
+            text-align: center;
             width: 100%;
         }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
 
-    <!-- 🔥 Bouton d'ouverture du menu -->
-    <div class="menu-button" onclick="toggleMenu()">
-        <i class="fas fa-bars"></i>
-    </div>
-
-    <!-- 📌 Menu déroulant en plein écran -->
-    <div class="menu" id="menu">
-        <a href="#">Accueil</a>
-        <a href="/conditions-generales">Terms of Service</a>
-        <a href="/politiques-de-confidentialite">Privacy Notice</a>
-        <a href="/politique-de-remboursement">Refund Policy</a>
-        <a href="/contact">Contact</a>
-        <a href="/faq">FAQ</a>
-    </div>
-
-    <!-- 🌟 Contenu principal -->
+    <!-- 🔥 Contenu principal -->
     <div class="container">
+        <!-- 🔹 Image de profil -->
         <div class="image-container">
             <img src="/static/influenceuse.png" alt="Influenceuse IA">
         </div>
         
-        <!-- Icônes des réseaux sociaux -->
+        <!-- 🔹 Icônes des réseaux sociaux -->
         <div class="social-icons">
             <a href="https://t.me/+jtyRj1IY9Gs0ZGM8" target="_blank" class="fab fa-telegram"></a>
             <a href="https://www.instagram.com/ladymorellee" target="_blank" class="fab fa-instagram"></a>
@@ -152,38 +155,34 @@
             <a href="https://youtube.com/@aannagram" target="_blank" class="fab fa-youtube"></a>
         </div>
 
-        <!-- Nom et badge vérifié -->
+        <!-- 🔹 Nom avec badge -->
         <h1 class="text-2xl font-bold mt-3 inline-flex items-center gap-2">
             Anna Morelle
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Vérifié" class="verified-badge">
         </h1>
 
+        <!-- 🔹 Infos -->
         <div class="info-line">
             <span class="city">Paris, France </span> • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong>
         </div>
 
+        <!-- 🔹 Texte d'introduction -->
         <p class="intro-text">
             Prêt à découvrir un univers exclusif ? ✨ Chaque jour, profite de contenus uniques et immersifs 🔥. Laisse-toi emporter par l’expérience et vis des moments intenses 😏. Rejoins-moi maintenant ❤️.
         </p>
 
+        <!-- 🔹 Bouton d'abonnement -->
         <a href="https://t.me/annaverifybot" class="subscribe-btn">
             S’abonner maintenant
         </a>
     </div>
 
-    <!-- 📌 Pied de page -->
+    <!-- 🔹 Pied de page -->
     <footer>
         <div class="footer-text">
             © 2025 - Anna Morelle
         </div>
     </footer>
-
-    <!-- 🔥 Script pour le menu déroulant -->
-    <script>
-        function toggleMenu() {
-            document.getElementById('menu').classList.toggle('active');
-        }
-    </script>
 
 </body>
 </html>
