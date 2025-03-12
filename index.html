@@ -3,152 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="🍑 Le Coin Premium d'Anna 💗 - Anna Morelle" />
+    <meta property="og:description" content="Rejoignez mon univers exclusif et accédez à mes contenus inédits réservés aux abonnés." />
+    <meta property="og:image" content="URL_de_l_image" />
+    <meta property="og:url" content="https://annamorelle.me" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>🍑 Le Coin Premium d'Anna 💗 - Anna Morelle</title>
-    
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
+    
+    <!-- Favicon standard -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/static/favicon48.png">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon180.png">
+
+    <!-- Android Chrome -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/static/favicon192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/static/favicon512.png">
+
+    <!-- Manifest pour Web App -->
+    <link rel="manifest" href="/static/site.webmanifest">
 
     <style>
-        /* 🔹 Empêcher le défilement */
+        /* Empêcher tout défilement */
         html, body {
             overflow: hidden;
             height: 100vh;
             margin: 0;
             padding: 0;
-            background-color: #111;
+            background-color: #111; /* Fond sombre pour faire ressortir la bordure */
         }
 
-        /* 🔹 En-tête avec le logo et le menu */
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
+        /* Conteneur principal */
+        .container {
+            width: 100vw;
+            height: 100vh;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 15px 20px;
-            background: #000;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+            justify-content: center;
+            text-align: center;
         }
 
-        /* 🔹 Logo stylé */
-        .logo {
-            font-size: 1.8rem;
-            font-family: 'Parisienne', cursive;
-            color: #ff007f;
-            font-weight: bold;
+        /* Image de profil avec bordure dégradée autour */
+        .image-container {
+            width: 250px; /* Taille de l'image */
+            height: 250px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px; /* Moins d'espace en dessous */
+            margin-top: -10px; /* Remonté légèrement */
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #ffbc00); /* Dégradé rose, orange, jaune */
+            padding: 8px; /* Espace entre l'image et la bordure */
+            box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1); /* Ombre légère autour de la bordure */
         }
 
-        /* 🔹 Bouton menu burger */
-        .menu-toggle {
-            font-size: 1.8rem;
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Icônes des réseaux sociaux */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .social-icons a {
             color: white;
-            cursor: pointer;
+            font-size: 1.3rem;
             transition: transform 0.3s ease;
         }
 
-        .menu-toggle:hover {
-            transform: rotate(90deg);
-            color: #ff007f;
+        .social-icons a:hover {
+            transform: scale(1.1);
         }
 
-        /* 🔹 Menu caché par défaut */
-        .menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 60%;
-            height: 100vh;
-            background: rgba(20, 20, 20, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 50px 20px;
-            transition: right 0.4s ease-in-out;
-            box-shadow: -10px 0 20px rgba(255, 0, 127, 0.3);
+        /* Badge de vérification */
+        .verified-badge {
+            width: 25px;
+            height: 25px;
         }
 
-        /* 🔹 Affichage du menu */
-        .menu.active {
-            right: 0;
+        /* Infos */
+        .info-line {
+            color: gray;
+            font-size: 0.9rem;
+            margin-top: 10px;
         }
 
-        /* 🔹 Liens du menu */
-        .menu a {
-            display: block;
-            color: white;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+        /* Texte d'introduction */
+        .intro-text {
+            font-size: 0.75rem;
+            line-height: 1.4;
+            max-width: 70%;
+            margin: 10px auto;
+            word-wrap: break-word;
+        }
+
+        /* Animation Pulsing */
+        @keyframes pulsing {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(0, 120, 255, 0.6);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 25px rgba(0, 120, 255, 0.8);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(0, 120, 255, 0.6);
+            }
+        }
+
+        /* Application de l'effet pulsing au bouton d'abonnement */
+        .subscribe-btn {
+            background-color: #ff007f;
+            padding: 10px 20px;
+            border-radius: 8px;
             text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .menu a:hover {
-            color: #ff007f;
-            text-decoration: underline;
-        }
-
-        /* 🔹 Bouton pour fermer le menu */
-        .close-menu {
-            font-size: 2rem;
             color: white;
-            cursor: pointer;
-            position: absolute;
-            top: 15px;
-            right: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+            transition: background 0.3s ease;
+            animation: pulsing 1.5s infinite; /* Ajoute l'animation pulsing ici */
         }
 
-        .close-menu:hover {
-            color: #ff007f;
+        .subscribe-btn:hover {
+            background-color: #e6006c;
+            animation: none; /* Arrête l'animation quand le bouton est survolé */
+        }
+
+        /* Pied de page fixe */
+        footer {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: gray;
+            font-size: 0.8rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Ajouter une couleur jaune pour Paris, France */
+        .city {
+            color: #facc15; /* Couleur jaune de Tailwind CSS (amber-400) */
+        }
+
+        /* Style pour le pied de page */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: gray;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Ajout d'un espacement entre le texte "© 2025" et les liens */
+        .footer-text {
+            margin-bottom: -10px; /* Espace supplémentaire entre le texte et les liens */
+            margin-top: 10px; /* Espace supplémentaire au-dessus de "© 2025 - Anna Morelle" */
         }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
 
-    <!-- 🔹 En-tête -->
-    <header class="header">
-        <div class="logo">QUEEN ANNA</div>
-        <i class="fas fa-bars menu-toggle"></i> <!-- Menu burger -->
-    </header>
-
-    <!-- 🔹 Menu déroulant -->
-    <nav class="menu">
-        <i class="fas fa-times close-menu"></i> <!-- Bouton de fermeture -->
-        <a href="/">Accueil</a>
-        <a href="/conditions-generales">Conditions de service</a>
-        <a href="/politique-de-remboursement">Politiques de remboursement</a>
-        <a href="/politiques-de-confidentialite">Avis de confidentialité</a>
-        <a href="/faq">FAQ</a>
-        <a href="/contact">Contact</a>
-    </nav>
-
-    <!-- 🔹 Contenu principal -->
     <div class="container">
-        <!-- Image de profil -->
+        <!-- Photo avec bordure dégradée autour -->
         <div class="image-container">
             <img src="/static/influenceuse.png" alt="Influenceuse IA">
         </div>
         
-        <!-- Icônes des réseaux sociaux -->
+        <!-- Icônes des réseaux sociaux dans l'ordre souhaité -->
         <div class="social-icons">
-            <a href="https://t.me/+jtyRj1IY9Gs0ZGM8" target="_blank" class="fab fa-telegram"></a>
-            <a href="https://www.instagram.com/ladymorellee" target="_blank" class="fab fa-instagram"></a>
-            <a href="https://x.com/aannagram" target="_blank" class="fab fa-twitter"></a>
-            <a href="https://youtube.com/@aannagram" target="_blank" class="fab fa-youtube"></a>
+            <a href="https://t.me/+jtyRj1IY9Gs0ZGM8" target="_blank" class="fab fa-telegram"></a> <!-- Telegram -->
+            <a href="https://www.instagram.com/ladymorellee" target="_blank" class="fab fa-instagram"></a> <!-- Instagram -->
+            <a href="https://x.com/aannagram" target="_blank" class="fab fa-twitter"></a> <!-- Twitter -->
+            <a href="https://youtube.com/@aannagram" target="_blank" class="fab fa-youtube"></a> <!-- YouTube -->
         </div>
 
-        <!-- Nom avec badge -->
+        <!-- Nom et badge -->
         <h1 class="text-2xl font-bold mt-3 inline-flex items-center gap-2">
             Anna Morelle
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Vérifié" class="verified-badge">
         </h1>
 
-        <!-- Infos -->
+        <!-- Info -->
         <div class="info-line">
             <span class="city">Paris, France </span> • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong>
         </div>
 
         <!-- Texte d'introduction -->
         <p class="intro-text">
-            Prêt à découvrir un univers exclusif ? ✨ Chaque jour, profite de contenus uniques et immersifs 🔥. Laisse-toi emporter par l’expérience et vis des moments intenses 😏. Rejoins-moi maintenant ❤️.
+          Prêt à découvrir un univers exclusif ? ✨ Chaque jour, profite de contenus uniques et immersifs 🔥. Laisse-toi emporter par l’expérience et vis des moments intenses 😏. Rejoins-moi maintenant ❤️.
         </p>
 
         <!-- Bouton d'abonnement -->
@@ -163,24 +229,6 @@
             © 2025 - Anna Morelle
         </div>
     </footer>
-
-    <!-- 🔹 JavaScript pour le menu -->
-    <script>
-        document.querySelector(".menu-toggle").addEventListener("click", function() {
-            document.querySelector(".menu").classList.add("active");
-        });
-
-        document.querySelector(".close-menu").addEventListener("click", function() {
-            document.querySelector(".menu").classList.remove("active");
-        });
-
-        // Fermer le menu si on clique en dehors
-        window.addEventListener("click", function(event) {
-            if (!document.querySelector(".menu").contains(event.target) && !document.querySelector(".menu-toggle").contains(event.target)) {
-                document.querySelector(".menu").classList.remove("active");
-            }
-        });
-    </script>
 
 </body>
 </html>
