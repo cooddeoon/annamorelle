@@ -27,65 +27,66 @@
     <!-- Manifest pour Web App -->
     <link rel="manifest" href="/static/site.webmanifest">
 
-    <header class="bg-black text-white fixed top-0 left-0 w-full flex justify-center items-center p-4 shadow-lg z-50">
-    <!-- Bouton Menu -->
-    <button id="menu-toggle" class="text-white text-2xl focus:outline-none transition-transform duration-300">
-        &#9776;
-    </button>
-    
-    <!-- Menu Déroulant -->
-    <nav id="menu" class="fixed top-0 right-0 h-full w-64 bg-black bg-opacity-95 text-white flex flex-col items-center justify-center space-y-6 transform translate-x-full transition-transform duration-500">
-        <a href="/" class="menu-link">Accueil</a>
-        <a href="/conditions-generales" class="menu-link">Conditions de service</a>
-        <a href="/politiques-de-confidentialite" class="menu-link">Avis de confidentialité</a>
-        <a href="/politique-de-remboursement" class="menu-link">Politiques de remboursement</a>
-        <a href="/contact" class="menu-link">Contact</a>
-        <a href="/faq" class="menu-link">FAQ</a>
-    </nav>
-</header>
+    <header class="bg-transparent text-white fixed top-0 left-0 w-full flex justify-between items-center p-4 shadow-lg z-50">
+        <!-- Logo (supprimé) -->
+        
+        <!-- Bouton Menu (entouré d'un cercle rose) -->
+        <button id="menu-toggle" class="text-white text-2xl focus:outline-none transition-transform duration-300 p-4 border-4 border-pink-500 rounded-full">
+            &#9776;
+        </button>
+        
+        <!-- Menu Déroulant -->
+        <nav id="menu" class="fixed top-0 right-0 h-full w-64 bg-black bg-opacity-95 text-white flex flex-col items-center justify-center space-y-6 transform translate-x-full transition-transform duration-500">
+            <a href="/" class="menu-link">Accueil</a>
+            <a href="/conditions-generales" class="menu-link">Conditions de service</a>
+            <a href="/politiques-de-confidentialite" class="menu-link">Avis de confidentialité</a>
+            <a href="/politique-de-remboursement" class="menu-link">Politiques de remboursement</a>
+            <a href="/contact" class="menu-link">Contact</a>
+            <a href="/faq" class="menu-link">FAQ</a>
+        </nav>
+    </header>
 
-<style>
-    /* Animation du menu */
-    .menu-link {
-        text-decoration: none;
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: white;
-        position: relative;
-        transition: color 0.3s;
-    }
-    .menu-link:hover {
-        color: #ff007f;
-    }
-    .menu-link::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: -5px;
-        width: 0;
-        height: 2px;
-        background: #ff007f;
-        transition: width 0.3s, left 0.3s;
-    }
-    .menu-link:hover::after {
-        width: 100%;
-        left: 0;
-    }
-</style>
-
-<script>
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-        let menu = document.getElementById('menu');
-        if (menu.classList.contains('translate-x-full')) {
-            menu.classList.remove('translate-x-full');
-            this.style.transform = 'rotate(90deg)';
-        } else {
-            menu.classList.add('translate-x-full');
-            this.style.transform = 'rotate(0deg)';
+    <style>
+        /* Animation du menu */
+        .menu-link {
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            transition: color 0.3s;
         }
-    });
-</script>
+        .menu-link:hover {
+            color: #ff007f;
+        }
+        .menu-link::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: #ff007f;
+            transition: width 0.3s, left 0.3s;
+        }
+        .menu-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+    </style>
 
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            let menu = document.getElementById('menu');
+            if (menu.classList.contains('translate-x-full')) {
+                menu.classList.remove('translate-x-full');
+                this.style.transform = 'rotate(90deg)';
+            } else {
+                menu.classList.add('translate-x-full');
+                this.style.transform = 'rotate(0deg)';
+            }
+        });
+    </script>
     
     <style>
         /* Empêcher tout défilement */
@@ -95,153 +96,6 @@
             margin: 0;
             padding: 0;
             background-color: #111; /* Fond sombre pour faire ressortir la bordure */
-        }
-
-        /* Conteneur principal */
-        .container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        /* Image de profil avec bordure dégradée autour */
-        .image-container {
-            width: 250px; /* Taille de l'image */
-            height: 250px;
-            border-radius: 50%;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 40px; /* Moins d'espace en dessous */
-            margin-top: -10px; /* Remonté légèrement */
-            background: linear-gradient(45deg, #ff0080, #ff8c00, #ffbc00); /* Dégradé rose, orange, jaune */
-            padding: 8px; /* Espace entre l'image et la bordure */
-            box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1); /* Ombre légère autour de la bordure */
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        /* Icônes des réseaux sociaux */
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .social-icons a {
-            color: white;
-            font-size: 1.3rem;
-            transition: transform 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            transform: scale(1.1);
-        }
-
-        /* Badge de vérification */
-        .verified-badge {
-            width: 25px;
-            height: 25px;
-        }
-
-        /* Infos */
-        .info-line {
-            color: gray;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-
-        /* Texte d'introduction */
-        .intro-text {
-            font-size: 0.75rem;
-            line-height: 1.4;
-            max-width: 70%;
-            margin: 10px auto;
-            word-wrap: break-word;
-        }
-
-        /* Animation Pulsing */
-        @keyframes pulsing {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 15px rgba(0, 120, 255, 0.6);
-            }
-            50% {
-                transform: scale(1.1);
-                box-shadow: 0 0 25px rgba(0, 120, 255, 0.8);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 15px rgba(0, 120, 255, 0.6);
-            }
-        }
-
-        /* Application de l'effet pulsing au bouton d'abonnement */
-        .subscribe-btn {
-            background-color: #ff007f;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
-            font-size: 1rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 5px;
-            transition: background 0.3s ease;
-            animation: pulsing 1.5s infinite; /* Ajoute l'animation pulsing ici */
-        }
-
-        .subscribe-btn:hover {
-            background-color: #e6006c;
-            animation: none; /* Arrête l'animation quand le bouton est survolé */
-        }
-
-        /* Pied de page fixe */
-        footer {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: gray;
-            font-size: 0.8rem;
-            text-align: center;
-            width: 100%;
-        }
-
-        /* Ajouter une couleur jaune pour Paris, France */
-        .city {
-            color: #facc15; /* Couleur jaune de Tailwind CSS (amber-400) */
-        }
-
-        /* Style pour le pied de page */
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .footer-links a {
-            color: gray;
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        /* Ajout d'un espacement entre le texte "© 2025" et les liens */
-        .footer-text {
-            margin-bottom: -10px; /* Espace supplémentaire entre le texte et les liens */
-            margin-top: 10px; /* Espace supplémentaire au-dessus de "© 2025 - Anna Morelle" */
         }
     </style>
 </head>
