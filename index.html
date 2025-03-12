@@ -31,15 +31,19 @@
             text-align: center;
         }
 
-        /* Image de profil plus grande et repositionnée */
+        /* Image de profil plus grande avec bordure ajustable */
         .image-container {
-            width: 250px; /* Augmenté de 150px à 180px */
+            width: 250px; /* Taille de l'image */
             height: 250px;
             border-radius: 50%;
             position: relative;
             overflow: hidden;
             margin-bottom: 40px; /* Moins d'espace en dessous */
             margin-top: -70px; /* Remonté légèrement */
+            border: 8px solid transparent; /* Bordure de 8px avec couleur transparente */
+            background-image: linear-gradient(45deg, #ff0080, #ff8c00, #ffbc00); /* Dégradé rose-jaune */
+            background-origin: border-box;
+            background-clip: content-box; /* Applique le dégradé uniquement à la bordure */
         }
 
         .image-container img {
@@ -125,7 +129,7 @@
 <body class="bg-gray-900 text-white">
 
     <div class="container">
-        <!-- Photo sans bordure mais sans statut "En ligne" -->
+        <!-- Photo sans bordure mais avec bordure dégradée -->
         <div class="image-container">
             <img src="/static/influenceuse.png" alt="Influenceuse IA">
         </div>
@@ -145,7 +149,7 @@
 
         <!-- Info -->
         <div class="info-line">
-            <span class="city">Paris, France </span> • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong>
+            <span class="city">Paris, France 🇫🇷</span> • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong>
         </div>
 
         <!-- Texte d'introduction -->
