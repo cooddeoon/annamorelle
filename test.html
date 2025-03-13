@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conditions Générales - QUEEN ANNA</title>
+    <title>Conditions Générales</title>
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="/static/favicon48.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/static/favicon192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/static/favicon512.png">
-    <link rel="manifest" href="/static/site.webmanifest">
-
+    
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
@@ -30,7 +25,6 @@
             flex-direction: column;
         }
         .container {
-            width: 100%;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -59,7 +53,7 @@
             background: black;
             padding: 15px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             position: fixed;
             width: 100%;
@@ -74,28 +68,42 @@
             color: white;
             cursor: pointer;
         }
-        .menu-content {
-            display: flex;
+
+        /* Styles du menu déroulant */
+        #menuDropdown {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: -5px 0 10px rgba(255, 0, 127, 0.3);
+            padding: 20px;
             flex-direction: column;
             align-items: center;
-            background: rgba(0, 0, 0, 0.9);
-            padding: 20px;
-            box-shadow: -5px 0 10px rgba(255, 0, 127, 0.3);
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
         }
-        .menu-container ul {
+        #menuDropdown.menu-open {
+            display: flex;
+            transform: translateX(0);
+        }
+        #menuDropdown ul {
             list-style: none;
             padding: 0;
+            text-align: center;
         }
-        .menu-container li {
+        #menuDropdown li {
             margin: 10px 0;
         }
-        .menu-container a {
+        #menuDropdown a {
             color: white;
             text-decoration: none;
             font-size: 18px;
             transition: color 0.3s;
         }
-        .menu-container a:hover {
+        #menuDropdown a:hover {
             color: #ff007f;
         }
     </style>
@@ -104,65 +112,45 @@
 
     <!-- Menu -->
     <div class="menu-container">
-        <h1 class="text-pink-500 text-2xl font-bold">QUEEN ANNA</h1>
         <button id="menuButton" class="menu-button">☰</button>
     </div>
 
     <!-- Menu déroulant -->
-    <div id="menuDropdown" class="menu-container" style="display: none;">
-        <div class="menu-content">
-            <button id="closeMenu" class="text-white bg-red-500 px-2 py-1 rounded">❌</button>
-            <ul>
-                <li><a href="/">Accueil</a></li>
-                <li><a href="/conditions-generales">Conditions</a></li>
-                <li><a href="/politiques-de-confidentialite">Confidentialité</a></li>
-                <li><a href="/politiques-de-remboursement">Remboursement</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/faq">FAQ</a></li>
-            </ul>
-        </div>
+    <div id="menuDropdown">
+        <button id="closeMenu" class="text-white bg-red-500 px-2 py-1 rounded mb-4">❌</button>
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/conditions-generales">Conditions</a></li>
+            <li><a href="/politiques-de-confidentialite">Confidentialité</a></li>
+            <li><a href="/politiques-de-remboursement">Remboursement</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/faq">FAQ</a></li>
+        </ul>
     </div>
 
     <!-- Contenu principal -->
-    <h1>Conditions Générales d’Utilisation</h1>
+    <div class="container">
+        <h1>Conditions Générales d’Utilisation</h1>
         <div class="content">
             <h2>1. Introduction</h2>
-            <p>En accédant à ce site et en souscrivant à un abonnement, vous acceptez les présentes Conditions Générales d’Utilisation (CGU). Si vous n’êtes pas d’accord avec ces conditions, vous ne devez pas utiliser nos services.</p>
+            <p>En accédant à ce site et en souscrivant à un abonnement, vous acceptez les présentes Conditions Générales d’Utilisation (CGU).</p>
             
             <h2>2. Services fournis</h2>
-            <p>Nous proposons des contenus exclusifs sur notre canal privé Telegram accessible uniquement aux abonnés payants. Les contenus incluent, mais ne se limitent pas à, des vidéos, photos, messages et autres publications créées et partagées par la créatrice de contenu.</p>
+            <p>Nous proposons des contenus exclusifs sur notre canal privé Telegram accessible uniquement aux abonnés payants.</p>
             
             <h2>3. Abonnement et paiement</h2>
-            <p>L’accès au canal privé est soumis à un abonnement payant. Le paiement est effectué via la plateforme Paddle, qui prend en charge les transactions sécurisées. En fournissant vos informations de paiement et en souscrivant à un abonnement, vous acceptez de payer le montant spécifié pour l’abonnement choisi.</p>
+            <p>L’accès au canal privé est soumis à un abonnement payant. Le paiement est effectué via Paddle.</p>
             
             <h2>4. Accès et utilisation</h2>
-            <p>Une fois votre paiement confirmé, vous recevrez un accès au canal privé Telegram via un lien d’invitation envoyé par notre bot Telegram. Vous êtes responsable de maintenir la confidentialité de vos identifiants et de vous assurer que vous avez un accès adéquat à Telegram.</p>
+            <p>Une fois votre paiement confirmé, vous recevrez un accès au canal privé Telegram via un lien d’invitation.</p>
             
             <h2>5. Politique de remboursement</h2>
-            <p>Les abonnements ne sont généralement pas remboursables, sauf dans les cas prévus par la loi. En cas de problèmes de paiement ou d’abonnement, veuillez contacter notre support.</p>
-            
-            <h2>6. Expiration et réabonnement</h2>
-            <p>L’abonnement est valable pour une période définie, après quoi il expirera. En cas d’expiration ou de non-paiement, vous serez automatiquement retiré du canal. Vous pouvez vous réabonner à tout moment via le lien de réabonnement fourni.</p>
-            
-            <h2>7. Comportement des utilisateurs</h2>
-            <p>Vous vous engagez à ne pas partager, diffuser ou revendre le contenu du canal privé sans autorisation explicite. Toute violation de ces termes pourra entraîner la suppression de votre accès et l’expulsion du canal.</p>
-            
-            <h2>8. Modifications des conditions</h2>
-            <p>Nous nous réservons le droit de modifier ces conditions à tout moment. Les modifications seront publiées sur ce site et prendront effet dès leur publication. Il est de votre responsabilité de consulter régulièrement ces conditions.</p>
-            
-            <h2>9. Responsabilités</h2>
-            <p>Nous ne sommes pas responsables des pannes de service ou des erreurs techniques qui pourraient affecter l’accès aux contenus. Nous ne garantissons pas que l’accès aux contenus sera ininterrompu ou exempt d’erreurs.</p>
-            
-            <h2>10. Données personnelles</h2>
-            <p>Les informations personnelles que vous fournissez lors de votre inscription sont collectées et traitées conformément à notre politique de confidentialité. Ces informations peuvent être utilisées pour gérer votre abonnement et vous fournir un service client.</p>
-            
-            <h2>11. Droit applicable</h2>
-            <p>Les présentes Conditions Générales d’Utilisation sont régies par la législation en vigueur dans le pays où nous opérons. Tout litige sera soumis aux tribunaux compétents de ce pays.</p>
+            <p>Les abonnements ne sont généralement pas remboursables.</p>
         </div>
     </div>
 
     <footer>
-        &copy; 2025 QUEEN ANNA. Tous droits réservés.
+        &copy; 2025. Tous droits réservés.
     </footer>
 
     <!-- Script du menu -->
@@ -176,9 +164,23 @@
             setTimeout(() => menuDropdown.classList.add("menu-open"), 10);
         });
 
+        document.addEventListener("click", (event) => {
+            if (!menuDropdown.contains(event.target) && event.target !== menuButton) {
+                menuDropdown.classList.remove("menu-open");
+                setTimeout(() => (menuDropdown.style.display = "none"), 300);
+            }
+        });
+
         closeMenu.addEventListener("click", () => {
             menuDropdown.classList.remove("menu-open");
             setTimeout(() => (menuDropdown.style.display = "none"), 300);
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                menuDropdown.classList.remove("menu-open");
+                setTimeout(() => (menuDropdown.style.display = "none"), 300);
+            }
         });
     </script>
 
