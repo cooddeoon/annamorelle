@@ -192,7 +192,6 @@
     <!-- Menu déroulant -->
     <div id="menuDropdown" class="menu-container">
     <div class="menu-content">
-        <button id="closeMenu" class="text-white bg-red-500 px-2 py-1 rounded">❌</button>
         <ul>
             <li><a href="/">Accueil</a></li>
             <li><a href="/conditions-generales">Conditions</a></li>
@@ -248,23 +247,27 @@
     <!-- Script du menu -->
     <script>
     const menuButton = document.getElementById("menuButton");
-    const menuDropdown = document.getElementById("menuDropdown");
+const menuDropdown = document.getElementById("menuDropdown");
 
-    // Fonction pour ouvrir/fermer le menu
-    menuButton.addEventListener("click", (event) => {
-        event.stopPropagation(); // Empêche la propagation du clic
-        menuDropdown.style.display = menuDropdown.style.display === "flex" ? "none" : "flex";
-    });
+menuButton.addEventListener("click", (event) => {
+    event.stopPropagation(); // Empêche la fermeture immédiate
+    menuDropdown.classList.toggle("menu-open"); // Ajoute ou enlève la classe d'affichage
+    menuDropdown.style.display = menuDropdown.classList.contains("menu-open") ? "flex" : "none";
+});
 
-    // Fermer le menu si on clique n'importe où sur la page
-    document.addEventListener("click", () => {
+// Fermer le menu si on clique en dehors de celui-ci
+document.addEventListener("click", (event) => {
+    if (!menuDropdown.contains(event.target) && !menuButton.contains(event.target)) {
+        menuDropdown.classList.remove("menu-open");
         menuDropdown.style.display = "none";
-    });
+    }
+});
 
-    // Empêcher la fermeture si on clique à l'intérieur du menu
-    menuDropdown.addEventListener("click", (event) => {
-        event.stopPropagation();
-    });
+// Empêcher la fermeture si on clique à l'intérieur du menu
+menuDropdown.addEventListener("click", (event) => {
+    event.stopPropagation();
+});
+
 </script>
 
 </body>
