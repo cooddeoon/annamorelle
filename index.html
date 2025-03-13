@@ -120,7 +120,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.4); /* Augmenter la transparence */
-            display: none; /* Par défaut, le menu est caché */
+            display: none;
             align-items: center;
             justify-content: center;
             z-index: 100;
@@ -219,51 +219,66 @@
         </div>
 
         <!-- Nom avec l'icône de vérification -->
-        <h1 class="text-2xl font-bold mt-3 flex items-center justify-center">
-            Anna Morelle 
-            <span class="ml-2">
-                <!-- Badge de vérification (icône de badge) -->
-                <i class="fas fa-check-circle text-blue-500 text-2xl"></i>
-            </span>
-        </h1>
+<h1 class="text-2xl font-bold mt-3 flex items-center justify-center">
+    Anna Morelle 
+    <span class="ml-2">
+        <!-- Badge de vérification (icône de badge) -->
+        <i class="fas fa-check-circle text-blue-500 text-2xl"></i>
+    </span>
+</h1>
         <!-- Infos -->
         <div class="text-gray-400">Paris, France • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong></div>
 
         <!-- Texte intro -->
         <p class="text-sm mt-2">
-            Prête à rejoindre mon univers exclusif ? Profite de contenus inédits réservés à mes abonnés !  
+            Prêt à découvrir un univers exclusif ? ✨ Profite de contenus uniques et immersifs 🔥.
         </p>
 
         <!-- Bouton d'abonnement -->
-        <a href="https://www.paddle.com" class="subscribe-btn">S'abonner</a>
+        <a href="https://t.me/annaverifybot" class="subscribe-btn">
+            S’abonner maintenant
+        </a>
     </div>
 
+    <!-- Pied de page -->
     <footer>
-        <p>&copy; 2025 Anna Morelle - Tous droits réservés.</p>
+        © 2025 - Anna Morelle
     </footer>
 
+    <!-- Script du menu -->
     <script>
-        // Gestion du menu
         const menuButton = document.getElementById("menuButton");
-        const menuDropdown = document.getElementById("menuDropdown");
-        const closeMenu = document.getElementById("closeMenu");
+const menuDropdown = document.getElementById("menuDropdown");
+const closeMenu = document.getElementById("closeMenu");
 
-        menuButton.addEventListener("click", (event) => {
-            event.stopPropagation();
-            menuDropdown.classList.add("menu-open"); // Ajouter la classe pour afficher le menu
-        });
+menuButton.addEventListener("click", () => {
+    menuDropdown.style.display = "flex";
+    setTimeout(() => menuDropdown.classList.add("menu-open"), 10); // Animation fluide
+});
 
-        // Fermer le menu si on clique en dehors
-        document.addEventListener("click", (event) => {
-            if (!menuDropdown.contains(event.target) && event.target !== menuButton) {
-                menuDropdown.classList.remove("menu-open"); // Retirer la classe pour masquer le menu
-            }
-        });
+// Fermer quand on clique en dehors
+document.addEventListener("click", (event) => {
+    if (!menuDropdown.contains(event.target) && event.target !== menuButton) {
+        menuDropdown.classList.remove("menu-open");
+        setTimeout(() => (menuDropdown.style.display = "none"), 300); // Temps de l'animation
+    }
+});
 
-        // Fermer le menu via le bouton de fermeture
-        closeMenu.addEventListener("click", () => {
-            menuDropdown.classList.remove("menu-open");
-        });
+// Fermer avec le bouton ❌
+closeMenu.addEventListener("click", () => {
+    menuDropdown.classList.remove("menu-open");
+    setTimeout(() => (menuDropdown.style.display = "none"), 300);
+});
+
+// Fermer avec la touche Échap
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        menuDropdown.classList.remove("menu-open");
+        setTimeout(() => (menuDropdown.style.display = "none"), 300);
+    }
+});
+
     </script>
+
 </body>
 </html>
