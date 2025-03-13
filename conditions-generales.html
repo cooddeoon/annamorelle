@@ -60,19 +60,19 @@
         }
 
         /* Styles du menu */
-.menu-container {
-    background: black;
-    padding: 15px;
-    display: flex;
-    justify-content: center; /* Centre le menu */
-    align-items: center;
-    position: fixed; /* Fixe le menu en haut */
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Ajoute une légère ombre pour le détacher */
-}
+        .menu-container {
+            background: black;
+            padding: 15px;
+            display: flex;
+            justify-content: center; /* Centre le menu */
+            align-items: center;
+            position: fixed; /* Fixe le menu en haut */
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Ajoute une ombre pour un effet de séparation */
+        }
         .menu-button {
             background: none;
             border: none;
@@ -82,46 +82,46 @@
         }
 
         /* Styles du menu déroulant */
-#menuDropdown {
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-20px);
-    width: 250px;
-    background: rgba(0, 0, 0, 0.95);
-    box-shadow: 0 5px 10px rgba(255, 0, 127, 0.3);
-    padding: 20px;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease-in-out;
-}
+        #menuDropdown {
+            display: none;
+            position: absolute; /* Positionné absolument par rapport à la menu-container */
+            top: 60px; /* Distance sous le bouton */
+            left: 50%; /* Centre le menu */
+            transform: translateX(-50%) translateY(-20px); /* Centre le menu horizontalement et commence légèrement au-dessus */
+            width: 250px;
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 5px 10px rgba(255, 0, 127, 0.3);
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease-in-out;
+        }
 
-#menuDropdown.menu-open {
-    display: flex;
-    transform: translateX(-50%) translateY(0);
-}
+        #menuDropdown.menu-open {
+            display: flex;
+            transform: translateX(-50%) translateY(0); /* Glisse vers le bas tout en restant centré */
+        }
 
-#menuDropdown ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-}
+        #menuDropdown ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
 
-#menuDropdown li {
-    margin: 10px 0;
-}
+        #menuDropdown li {
+            margin: 10px 0;
+        }
 
-#menuDropdown a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s;
-}
+        #menuDropdown a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
 
-#menuDropdown a:hover {
-    color: #ff007f;
-}
+        #menuDropdown a:hover {
+            color: #ff007f;
+        }
     </style>
 </head>
 <body>
@@ -190,33 +190,32 @@
     <!-- Script du menu -->
     <script>
         const menuButton = document.getElementById("menuButton");
-const menuDropdown = document.getElementById("menuDropdown");
-const closeMenu = document.getElementById("closeMenu");
+        const menuDropdown = document.getElementById("menuDropdown");
+        const closeMenu = document.getElementById("closeMenu");
 
-menuButton.addEventListener("click", () => {
-    menuDropdown.style.display = "flex";
-    setTimeout(() => menuDropdown.classList.add("menu-open"), 10);
-});
+        menuButton.addEventListener("click", () => {
+            menuDropdown.style.display = "flex";
+            setTimeout(() => menuDropdown.classList.add("menu-open"), 10);
+        });
 
-document.addEventListener("click", (event) => {
-    if (!menuDropdown.contains(event.target) && event.target !== menuButton) {
-        menuDropdown.classList.remove("menu-open");
-        setTimeout(() => (menuDropdown.style.display = "none"), 300);
-    }
-});
+        document.addEventListener("click", (event) => {
+            if (!menuDropdown.contains(event.target) && event.target !== menuButton) {
+                menuDropdown.classList.remove("menu-open");
+                setTimeout(() => (menuDropdown.style.display = "none"), 300);
+            }
+        });
 
-closeMenu.addEventListener("click", () => {
-    menuDropdown.classList.remove("menu-open");
-    setTimeout(() => (menuDropdown.style.display = "none"), 300);
-});
+        closeMenu.addEventListener("click", () => {
+            menuDropdown.classList.remove("menu-open");
+            setTimeout(() => (menuDropdown.style.display = "none"), 300);
+        });
 
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-        menuDropdown.classList.remove("menu-open");
-        setTimeout(() => (menuDropdown.style.display = "none"), 300);
-    }
-});
-        
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                menuDropdown.classList.remove("menu-open");
+                setTimeout(() => (menuDropdown.style.display = "none"), 300);
+            }
+        });
     </script>
 
 </body>
