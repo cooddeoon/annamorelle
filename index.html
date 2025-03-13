@@ -247,14 +247,31 @@
 
     <!-- Script du menu -->
     <script>
-        const menuButton = document.getElementById("menuButton");
-        const menuDropdown = document.getElementById("menuDropdown");
+    const menuButton = document.getElementById("menuButton");
+    const closeMenu = document.getElementById("closeMenu");
+    const menuDropdown = document.getElementById("menuDropdown");
 
-        menuButton.addEventListener("click", () => {
-            menuDropdown.style.display = menuDropdown.style.display === "flex" ? "none" : "flex";
-            menuDropdown.classList.toggle("menu-open");
-        });
-    </script>
+    // Fonction pour ouvrir/fermer le menu
+    menuButton.addEventListener("click", () => {
+        menuDropdown.style.display = menuDropdown.style.display === "flex" ? "none" : "flex";
+        menuDropdown.classList.toggle("menu-open");
+    });
+
+    // Fonction pour fermer le menu en cliquant sur ❌
+    closeMenu.addEventListener("click", () => {
+        menuDropdown.style.display = "none";
+        menuDropdown.classList.remove("menu-open");
+    });
+
+    // Fermer le menu si on clique en dehors du menu
+    window.addEventListener("click", (e) => {
+        if (!menuDropdown.contains(e.target) && !menuButton.contains(e.target)) {
+            menuDropdown.style.display = "none";
+            menuDropdown.classList.remove("menu-open");
+        }
+    });
+</script>
+>
 
 </body>
 </html>
