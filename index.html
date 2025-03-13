@@ -247,28 +247,33 @@
     <!-- Script du menu -->
     <script>
     const menuButton = document.getElementById("menuButton");
-const menuDropdown = document.getElementById("menuDropdown");
+    const menuDropdown = document.getElementById("menuDropdown");
+    const closeMenu = document.getElementById("closeMenu");
 
-menuButton.addEventListener("click", (event) => {
-    event.stopPropagation(); // Empêche la fermeture immédiate
-    menuDropdown.classList.toggle("menu-open"); // Ajoute ou enlève la classe d'affichage
-    menuDropdown.style.display = menuDropdown.classList.contains("menu-open") ? "flex" : "none";
-});
+    // Fonction pour ouvrir le menu
+    menuButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        menuDropdown.style.display = "flex";
+        document.body.classList.add("menu-open");
+    });
 
-// Fermer le menu si on clique en dehors de celui-ci
-document.addEventListener("click", (event) => {
-    if (!menuDropdown.contains(event.target) && !menuButton.contains(event.target)) {
-        menuDropdown.classList.remove("menu-open");
+    // Fonction pour fermer le menu
+    function closeMenuDropdown() {
         menuDropdown.style.display = "none";
+        document.body.classList.remove("menu-open");
     }
-});
 
-// Empêcher la fermeture si on clique à l'intérieur du menu
-menuDropdown.addEventListener("click", (event) => {
-    event.stopPropagation();
-});
+    // Fermer le menu en cliquant n'importe où sauf sur le menu lui-même
+    document.addEventListener("click", (event) => {
+        if (!menuDropdown.contains(event.target) && event.target !== menuButton) {
+            closeMenuDropdown();
+        }
+    });
 
+    // Fermer en cliquant sur le bouton de fermeture
+    closeMenu.addEventListener("click", closeMenuDropdown);
 </script>
+
 
 </body>
 </html>
