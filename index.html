@@ -245,14 +245,12 @@
     </footer>
 
     <!-- Script du menu -->
-    <script>
-        const menuButton = document.getElementById("menuButton");
-        const menuDropdown = document.getElementById("menuDropdown");
-
-        menuButton.addEventListener("click", () => {
-            menuDropdown.style.display = menuDropdown.style.display === "flex" ? "none" : "flex";
-            menuDropdown.classList.toggle("menu-open");
-        });
+    document.addEventListener("click", (event) => {
+    if (!menuDropdown.contains(event.target) && !menuButton.contains(event.target)) {
+        menuDropdown.style.display = "none";
+        menuDropdown.classList.remove("menu-open");
+    }
+});
     </script>
 
 </body>
