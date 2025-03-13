@@ -86,13 +86,15 @@
             font-weight: bold;
             display: inline-block;
             margin-top: 20px;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             animation: pulsing 1.5s infinite;
         }
 
         .subscribe-btn:hover {
             background-color: #e6006c;
             animation: none;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.8); /* Effet de brillance */
         }
 
         /* Menu déroulant */
@@ -148,6 +150,44 @@
             left: 50%;
             transform: translateX(-50%); /* Centrer parfaitement le bouton */
             z-index: 50;
+        }
+
+        /* Bouton Menu avec effet brillant */
+        .fixed-menu-btn button {
+            position: relative;
+            z-index: 1;
+            padding: 12px 18px;
+            background-color: #ff007f;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .fixed-menu-btn button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #ff007f, #ff8c00, #ffbc00);
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(8px);
+            animation: glowing 1.5s ease-in-out infinite;
+        }
+
+        .fixed-menu-btn button:hover {
+            color: #ff00cc; /* Changement de couleur lors du survol */
+        }
+
+        /* Animation pour le scintillement brillant */
+        @keyframes glowing {
+            0% { background-position: 400% 0; }
+            50% { background-position: -400% 0; }
+            100% { background-position: 400% 0; }
         }
 
         /* Pied de page */
