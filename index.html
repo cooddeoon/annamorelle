@@ -120,7 +120,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.4); /* Augmenter la transparence */
-            display: none;
+            display: none; /* Par défaut, le menu est caché */
             align-items: center;
             justify-content: center;
             z-index: 100;
@@ -192,6 +192,7 @@
     <!-- Menu déroulant -->
     <div id="menuDropdown" class="menu-container">
     <div class="menu-content">
+        <button id="closeMenu" class="text-white bg-red-500 px-2 py-1 rounded">❌</button>
         <ul>
             <li><a href="/">Accueil</a></li>
             <li><a href="/conditions-generales">Conditions</a></li>
@@ -218,61 +219,51 @@
         </div>
 
         <!-- Nom avec l'icône de vérification -->
-<h1 class="text-2xl font-bold mt-3 flex items-center justify-center">
-    Anna Morelle 
-    <span class="ml-2">
-        <!-- Badge de vérification (icône de badge) -->
-        <i class="fas fa-check-circle text-blue-500 text-2xl"></i>
-    </span>
-</h1>
+        <h1 class="text-2xl font-bold mt-3 flex items-center justify-center">
+            Anna Morelle 
+            <span class="ml-2">
+                <!-- Badge de vérification (icône de badge) -->
+                <i class="fas fa-check-circle text-blue-500 text-2xl"></i>
+            </span>
+        </h1>
         <!-- Infos -->
         <div class="text-gray-400">Paris, France • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong></div>
 
         <!-- Texte intro -->
         <p class="text-sm mt-2">
-            Prêt à découvrir un univers exclusif ? ✨ Profite de contenus uniques et immersifs 🔥.
+            Prête à rejoindre mon univers exclusif ? Profite de contenus inédits réservés à mes abonnés !  
         </p>
 
         <!-- Bouton d'abonnement -->
-        <a href="https://t.me/annaverifybot" class="subscribe-btn">
-            S’abonner maintenant
-        </a>
+        <a href="https://www.paddle.com" class="subscribe-btn">S'abonner</a>
     </div>
 
-    <!-- Pied de page -->
     <footer>
-        © 2025 - Anna Morelle
+        <p>&copy; 2025 Anna Morelle - Tous droits réservés.</p>
     </footer>
 
-    <!-- Script du menu -->
     <script>
-    const menuButton = document.getElementById("menuButton");
-    const menuDropdown = document.getElementById("menuDropdown");
-    const closeMenu = document.getElementById("closeMenu");
+        // Gestion du menu
+        const menuButton = document.getElementById("menuButton");
+        const menuDropdown = document.getElementById("menuDropdown");
+        const closeMenu = document.getElementById("closeMenu");
 
-    // Fonction pour ouvrir le menu
-    menuButton.addEventListener("click", (event) => {
-        event.stopPropagation(); // Empêche la propagation du clic
-        menuDropdown.style.display = "flex"; // Affiche le menu
-    });
+        menuButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            menuDropdown.classList.add("menu-open"); // Ajouter la classe pour afficher le menu
+        });
 
-    // Fermer le menu si on clique n'importe où sur la page
-    document.addEventListener("click", (event) => {
-        if (!menuDropdown.contains(event.target) && event.target !== menuButton) {
-            menuDropdown.style.display = "none"; // Cache le menu
-        }
-    });
+        // Fermer le menu si on clique en dehors
+        document.addEventListener("click", (event) => {
+            if (!menuDropdown.contains(event.target) && event.target !== menuButton) {
+                menuDropdown.classList.remove("menu-open"); // Retirer la classe pour masquer le menu
+            }
+        });
 
-    // Empêcher la fermeture si on clique à l'intérieur du menu
-    menuDropdown.addEventListener("click", (event) => {
-        event.stopPropagation();
-    });
-
-    // Fonction pour fermer le menu via le bouton de fermeture
-    closeMenu.addEventListener("click", () => {
-        menuDropdown.style.display = "none"; // Cache le menu
-    });
-</script>
-
+        // Fermer le menu via le bouton de fermeture
+        closeMenu.addEventListener("click", () => {
+            menuDropdown.classList.remove("menu-open");
+        });
+    </script>
 </body>
 </html>
