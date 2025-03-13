@@ -1,1 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon32.png">
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        /* Styles globaux */
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .content {
+            max-width: 800px;
+            text-align: left;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #ff007f;
+        }
+        footer {
+            text-align: center;
+            color: gray;
+            font-size: 0.8rem;
+            padding: 15px 0;
+        }
+
+        /* Styles de l'accordéon */
+        .accordion {
+            width: 100%;
+            max-width: 800px;
+            background-color: #222;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #444;
+        }
+
+        .accordion-header {
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            text-align: left;
+            transition: background-color 0.3s;
+        }
+
+        .accordion-header:hover {
+            background-color: #444;
+        }
+
+        .accordion-body {
+            padding: 15px;
+            background-color: #111;
+            display: none;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .accordion-body.open {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu -->
+    <div class="menu-container">
+        <button id="menuButton" class="menu-button">☰</button>
+    </div>
+
+    <!-- Menu déroulant -->
+    <div id="menuDropdown">
+        <button id="closeMenu" class="text-white bg-red-500 px-2 py-1 rounded mb-4">❌</button>
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/conditions-generales">Conditions</a></li>
+            <li><a href="/politiques-de-confidentialite">Confidentialité</a></li>
+            <li><a href="/politiques-de-remboursement">Remboursement</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/faq">FAQ</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="container">
+        <h1>FAQ - Questions Fréquentes</h1>
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">Qu'est-ce qu'un abonnement à votre canal privé Telegram ?</div>
+                <div class="accordion-body">
+                    <p>L'abonnement vous donne accès à un canal privé Telegram où nous partageons des contenus exclusifs, y compris des vidéos, photos, et messages de la créatrice de contenu.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">Comment puis-je m'abonner ?</div>
+                <div class="accordion-body">
+                    <p>Vous pouvez vous abonner en cliquant sur le lien d'abonnement disponible sur notre site ou via le bot Telegram, qui vous redirigera vers la plateforme de paiement Paddle.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">Puis-je annuler mon abonnement ?</div>
+                <div class="accordion-body">
+                    <p>Les abonnements sont non-remboursables sauf indication contraire, mais vous pouvez annuler à tout moment via votre compte Paddle.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">Puis-je changer de plan d'abonnement ?</div>
+                <div class="accordion-body">
+                    <p>Oui, vous pouvez changer votre plan d'abonnement en contactant notre support, qui vous guidera dans le processus de mise à niveau ou de réduction de votre plan.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">Que faire si je rencontre un problème de paiement ?</div>
+                <div class="accordion-body">
+                    <p>Si vous avez des problèmes avec le paiement, contactez notre support via le formulaire de contact, et nous vous aiderons à résoudre la situation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025. Tous droits réservés.
+    </footer>
+
+    <!-- Script de l'accordéon -->
+    <script>
+        const accordions = document.querySelectorAll('.accordion-header');
+
+        accordions.forEach((accordion) => {
+            accordion.addEventListener('click', () => {
+                const body = accordion.nextElementSibling;
+
+                // Toggle la visibilité du corps de l'accordéon
+                body.classList.toggle('open');
+            });
+        });
+    </script>
+
+</body>
+</html>
 
