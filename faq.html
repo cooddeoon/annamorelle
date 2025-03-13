@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - Questions Fréquentes</title>
+    <title>Politique de Remboursement</title>
 
     <!-- Favicon standard -->
     <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon16.png">
@@ -64,7 +64,7 @@
             background: black;
             padding: 15px;
             display: flex;
-            justify-content: center; /* Centre le menu */
+            justify-content: center;
             align-items: center;
             position: fixed;
             width: 100%;
@@ -83,10 +83,10 @@
         /* Styles du menu déroulant */
         #menuDropdown {
             display: none;
-            position: absolute; /* Positionné absolument par rapport à la menu-container */
-            top: 60px; /* Distance sous le bouton */
-            left: 50%; /* Centre le menu */
-            transform: translateX(-50%) translateY(-20px); /* Centre le menu horizontalement et commence légèrement au-dessus */
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
             width: 250px;
             background: rgba(0, 0, 0, 0.95);
             box-shadow: 0 5px 10px rgba(255, 0, 127, 0.3);
@@ -98,7 +98,7 @@
 
         #menuDropdown.menu-open {
             display: flex;
-            transform: translateX(-50%) translateY(0); /* Glisse vers le bas tout en restant centré */
+            transform: translateX(-50%) translateY(0);
         }
 
         #menuDropdown ul {
@@ -122,44 +122,20 @@
             color: #ff007f;
         }
 
-        /* Styles de l'accordéon */
-        .accordion {
-            width: 100%;
-            max-width: 800px;
-            background-color: #222;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        /* Styles des icônes de réseaux sociaux */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
         }
-
-        .accordion-item {
-            border-bottom: 1px solid #444;
-        }
-
-        .accordion-header {
-            padding: 15px;
-            background-color: #333;
+        .social-icons a {
             color: white;
-            cursor: pointer;
-            font-size: 18px;
-            text-align: left;
-            transition: background-color 0.3s;
+            font-size: 24px;
+            transition: color 0.3s;
         }
-
-        .accordion-header:hover {
-            background-color: #444;
-        }
-
-        .accordion-body {
-            padding: 15px;
-            background-color: #111;
-            display: none;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        .accordion-body.open {
-            display: block;
+        .social-icons a:hover {
+            color: #ff007f;
         }
     </style>
 </head>
@@ -218,6 +194,24 @@
                 </div>
             </div>
         </div>
+
+        <!-- Section réseaux sociaux et e-mail -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/votrecompte" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.twitter.com/votrecompte" target="_blank" title="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/votrecompte" target="_blank" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="mailto:contact@annamorelle.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+
+        <p class="mt-4">Pour toute question, contactez-nous à <a href="mailto:contact@annamorelle.com" class="text-pink-500">contact@annamorelle.com</a></p>
     </div>
 
     <footer>
@@ -252,15 +246,6 @@
                 menuDropdown.classList.remove("menu-open");
                 setTimeout(() => (menuDropdown.style.display = "none"), 300);
             }
-        });
-
-        // Script de l'accordéon
-        const accordions = document.querySelectorAll('.accordion-header');
-        accordions.forEach((accordion) => {
-            accordion.addEventListener('click', () => {
-                const body = accordion.nextElementSibling;
-                body.classList.toggle('open');
-            });
         });
     </script>
 
