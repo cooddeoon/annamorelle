@@ -252,28 +252,27 @@
 
     // Fonction pour ouvrir le menu
     menuButton.addEventListener("click", (event) => {
-        event.stopPropagation();
-        menuDropdown.style.display = "flex";
-        document.body.classList.add("menu-open");
+        event.stopPropagation(); // Empêche la propagation du clic
+        menuDropdown.style.display = "flex"; // Affiche le menu
     });
 
-    // Fonction pour fermer le menu
-    function closeMenuDropdown() {
-        menuDropdown.style.display = "none";
-        document.body.classList.remove("menu-open");
-    }
-
-    // Fermer le menu en cliquant n'importe où sauf sur le menu lui-même
+    // Fermer le menu si on clique n'importe où sur la page
     document.addEventListener("click", (event) => {
         if (!menuDropdown.contains(event.target) && event.target !== menuButton) {
-            closeMenuDropdown();
+            menuDropdown.style.display = "none"; // Cache le menu
         }
     });
 
-    // Fermer en cliquant sur le bouton de fermeture
-    closeMenu.addEventListener("click", closeMenuDropdown);
-</script>
+    // Empêcher la fermeture si on clique à l'intérieur du menu
+    menuDropdown.addEventListener("click", (event) => {
+        event.stopPropagation();
+    });
 
+    // Fonction pour fermer le menu via le bouton de fermeture
+    closeMenu.addEventListener("click", () => {
+        menuDropdown.style.display = "none"; // Cache le menu
+    });
+</script>
 
 </body>
 </html>
