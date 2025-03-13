@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Conditions Générales d’Utilisation - Anna Morelle" />
-    <meta property="og:description" content="Consultez les Conditions Générales d’Utilisation." />
-    <meta property="og:image" content="URL_de_l_image" />
-    <meta property="og:url" content="https://annamorelle.me" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <title>Conditions Générales d’Utilisation - Anna Morelle</title>
-    
+    <title>Conditions Générales</title>
+
+    <!-- Favicon standard -->
     <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon32.png">
     <link rel="icon" type="image/png" sizes="48x48" href="/static/favicon48.png">
+
+    <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon180.png">
+
+    <!-- Android Chrome -->
     <link rel="icon" type="image/png" sizes="192x192" href="/static/favicon192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/static/favicon512.png">
+
+    <!-- Manifest pour Web App -->
     <link rel="manifest" href="/static/site.webmanifest">
+
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
+
     <style>
+        /* Styles globaux */
         html, body {
             margin: 0;
             padding: 0;
@@ -30,7 +36,6 @@
             flex-direction: column;
         }
         .container {
-            width: 100%;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -53,9 +58,92 @@
             font-size: 0.8rem;
             padding: 15px 0;
         }
+
+        /* Styles du menu */
+.menu-container {
+    background: black;
+    padding: 15px;
+    display: flex;
+    justify-content: center; /* Centre le menu */
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+        .menu-button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Styles du menu déroulant */
+#menuDropdown {
+    display: none;
+    position: absolute; /* Positionné absolument par rapport à la menu-container */
+    top: 60px; /* Distance sous le bouton */
+    left: 50%; /* Centre le menu */
+    transform: translateX(-50%) translateY(-20px); /* Centre le menu horizontalement et commence légèrement au-dessus */
+    width: 250px;
+    background: rgba(0, 0, 0, 0.95);
+    box-shadow: 0 5px 10px rgba(255, 0, 127, 0.3);
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+#menuDropdown.menu-open {
+    display: flex;
+    transform: translateX(-50%) translateY(0); /* Glisse vers le bas tout en restant centré */
+}
+
+#menuDropdown ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+#menuDropdown li {
+    margin: 10px 0;
+}
+
+#menuDropdown a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+#menuDropdown a:hover {
+    color: #ff007f;
+}
     </style>
 </head>
 <body>
+
+    <!-- Menu -->
+    <div class="menu-container">
+        <button id="menuButton" class="menu-button">☰</button>
+    </div>
+
+    <!-- Menu déroulant -->
+    <div id="menuDropdown">
+        <button id="closeMenu" class="text-white bg-red-500 px-2 py-1 rounded mb-4">❌</button>
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/conditions-generales">Conditions</a></li>
+            <li><a href="/politiques-de-confidentialite">Confidentialité</a></li>
+            <li><a href="/politiques-de-remboursement">Remboursement</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/faq">FAQ</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenu principal -->
     <div class="container">
         <h1>Conditions Générales d’Utilisation</h1>
         <div class="content">
@@ -93,8 +181,42 @@
             <p>Les présentes Conditions Générales d’Utilisation sont régies par la législation en vigueur dans le pays où nous opérons. Tout litige sera soumis aux tribunaux compétents de ce pays.</p>
         </div>
     </div>
+
     <footer>
-        <div>© 2025 - Anna Morelle</div>
+        &copy; 2025. Tous droits réservés.
     </footer>
+
+    <!-- Script du menu -->
+    <script>
+        const menuButton = document.getElementById("menuButton");
+const menuDropdown = document.getElementById("menuDropdown");
+const closeMenu = document.getElementById("closeMenu");
+
+menuButton.addEventListener("click", () => {
+    menuDropdown.style.display = "flex";
+    setTimeout(() => menuDropdown.classList.add("menu-open"), 10);
+});
+
+document.addEventListener("click", (event) => {
+    if (!menuDropdown.contains(event.target) && event.target !== menuButton) {
+        menuDropdown.classList.remove("menu-open");
+        setTimeout(() => (menuDropdown.style.display = "none"), 300);
+    }
+});
+
+closeMenu.addEventListener("click", () => {
+    menuDropdown.classList.remove("menu-open");
+    setTimeout(() => (menuDropdown.style.display = "none"), 300);
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        menuDropdown.classList.remove("menu-open");
+        setTimeout(() => (menuDropdown.style.display = "none"), 300);
+    }
+});
+        
+    </script>
+
 </body>
 </html>
