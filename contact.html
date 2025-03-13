@@ -1,1 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+
+    <!-- Favicon standard -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/static/favicon48.png">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon180.png">
+
+    <!-- Android Chrome -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/static/favicon192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/static/favicon512.png">
+
+    <!-- Manifest pour Web App -->
+    <link rel="manifest" href="/static/site.webmanifest">
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header / Menu */
+        .menu-container {
+            background: black;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Menu déroulant */
+        #menuDropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            width: 250px;
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 5px 10px rgba(255, 0, 127, 0.3);
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #menuDropdown.menu-open {
+            display: flex;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Formulaire de contact */
+        .container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            margin-top: 80px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            width: 100%;
+            background-color: #222;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+
+        .contact-form input[type="submit"] {
+            background-color: #ff007f;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form input[type="submit"]:hover {
+            background-color: #ff3399;
+        }
+
+        footer {
+            text-align: center;
+            color: gray;
+            font-size: 0.8rem;
+            padding: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu -->
+    <div class="menu-container">
+        <button id="menuButton" class="menu-button">☰</button>
+    </div>
+
+    <!-- Menu déroulant -->
+    <div id="menuDropdown">
+        <button id="closeMenu" class="text-white bg-red-500 px-2 py-1 rounded mb-4">❌</button>
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/conditions-generales">Conditions</a></li>
+            <li><a href="/politiques-de-confidentialite">Confidentialité</a></li>
+            <li><a href="/politiques-de-remboursement">Remboursement</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/faq">FAQ</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="container">
+        <h1>Contactez-nous</h1>
+        <p>Si vous avez des questions ou des demandes, n'hésitez pas à nous envoyer un message. Nous vous répondrons dans les plus brefs délais.</p>
+
+        <!-- Formulaire de contact -->
+        <form action="/envoyer-message" method="POST" class="contact-form">
+            <input type="text" name="nom" placeholder="Votre Nom" required>
+            <input type="email" name="email" placeholder="Votre Email" required>
+            <input type="text" name="sujet" placeholder="Sujet" required>
+            <textarea name="message" placeholder="Votre Message" rows="5" required></textarea>
+            <input type="submit" value="Envoyer le message">
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2025. Tous droits réservés.
+    </footer>
+
+    <!-- Script du menu -->
+    <script>
+        const menuButton = document.getElementById("menuButton");
+        const menuDropdown = document.getElementById("menuDropdown");
+        const closeMenu = document.getElementById("closeMenu");
+
+        // Affiche le menu déroulant
+        menuButton.addEventListener("click", () => {
+            menuDropdown.style.display = "flex";
+            setTimeout(() => menuDropdown.classList.add("menu-open"), 10);
+        });
+
+        // Ferme le menu lorsque l'utilisateur clique à l'extérieur
+        document.addEventListener("click", (event) => {
+            if (!menuDropdown.contains(event.target) && event.target !== menuButton) {
+                menuDropdown.classList.remove("menu-open");
+                setTimeout(() => (menuDropdown.style.display = "none"), 300);
+            }
+        });
+
+        // Ferme le menu si le bouton ❌ est cliqué
+        closeMenu.addEventListener("click", () => {
+            menuDropdown.classList.remove("menu-open");
+            setTimeout(() => (menuDropdown.style.display = "none"), 300);
+        });
+
+        // Ferme le menu si la touche Échap est pressée
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                menuDropdown.classList.remove("menu-open");
+                setTimeout(() => (menuDropdown.style.display = "none"), 300);
+            }
+        });
+    </script>
+
+</body>
+</html>
 
