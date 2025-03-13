@@ -9,6 +9,10 @@
     <meta property="og:url" content="https://annamorelle.me" />
     <meta name="twitter:card" content="summary_large_image" />
     <title>🍑 Le Coin Premium d'Anna 💗 - Anna Morelle</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
 
@@ -131,12 +135,21 @@
             transform: scale(1);
             opacity: 1;
         }
+
+        /* Centrer le bouton menu */
+        .fixed-menu-btn {
+            position: fixed;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
 
     <!-- Bouton Menu -->
-    <div class="fixed top-5 left-1/2 z-50 transform -translate-x-1/2">
+    <div class="fixed-menu-btn">
         <button id="menuButton" class="text-white bg-pink-500 px-4 py-2 rounded-lg focus:outline-none">
             ☰ Menu
         </button>
@@ -186,6 +199,11 @@
             S’abonner maintenant
         </a>
     </div>
+
+    <!-- Pied de page -->
+    <footer class="bg-gray-900 text-center text-gray-500 py-4">
+        <p>&copy; 2025 Anna Morelle. Tous droits réservés.</p>
+    </footer>
 
     <!-- Script du menu -->
     <script>
