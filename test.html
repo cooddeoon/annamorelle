@@ -1,1 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions Générales - QUEEN ANNA</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/static/favicon48.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/static/favicon192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/static/favicon512.png">
+    <link rel="manifest" href="/static/site.webmanifest">
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        /* Styles globaux */
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            width: 100%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .content {
+            max-width: 800px;
+            text-align: left;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #ff007f;
+        }
+        footer {
+            text-align: center;
+            color: gray;
+            font-size: 0.8rem;
+            padding: 15px 0;
+        }
+
+        /* Styles du menu */
+        .menu-container {
+            background: black;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .menu-button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+        .menu-dropdown {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-shadow: -5px 0 10px rgba(255, 0, 127, 0.3);
+        }
+        .menu-open {
+            display: flex !important;
+            transform: translateX(0);
+            transition: transform 0.3s ease-in-out;
+        }
+        .menu-dropdown a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        .menu-dropdown a:hover {
+            color: #ff007f;
+        }
+        .close-menu {
+            font-size: 24px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu -->
+    <div class="menu-container">
+        <h1 class="text-pink-500 text-2xl font-bold">QUEEN ANNA</h1>
+        <button id="menuButton" class="menu-button">☰</button>
+    </div>
+
+    <!-- Menu déroulant -->
+    <div id="menuDropdown" class="menu-dropdown">
+        <button id="closeMenu" class="close-menu">❌</button>
+        <a href="/">Accueil</a>
+        <a href="/conditions-generales">Conditions de service</a>
+        <a href="/politiques-de-confidentialite">Avis de confidentialité</a>
+        <a href="/politique-de-remboursement">Politiques de remboursement</a>
+        <a href="/contact">Contact</a>
+        <a href="/faq">FAQ</a>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="container">
+        <h1>Conditions Générales d’Utilisation</h1>
+        <div class="content">
+            <h2>1. Introduction</h2>
+            <p>En accédant à ce site et en souscrivant à un abonnement, vous acceptez les présentes Conditions Générales d’Utilisation (CGU). Si vous n’êtes pas d’accord avec ces conditions, vous ne devez pas utiliser nos services.</p>
+
+            <h2>2. Services fournis</h2>
+            <p>Nous proposons des contenus exclusifs sur notre canal privé Telegram accessible uniquement aux abonnés payants.</p>
+
+            <h2>3. Abonnement et paiement</h2>
+            <p>Le paiement est effectué via Paddle. En souscrivant à un abonnement, vous acceptez de payer le montant spécifié.</p>
+
+            <h2>4. Accès et utilisation</h2>
+            <p>Après paiement, vous recevrez un lien d’invitation au canal privé Telegram.</p>
+
+            <h2>5. Politique de remboursement</h2>
+            <p>Les abonnements ne sont pas remboursables, sauf exceptions légales.</p>
+
+            <h2>6. Expiration et réabonnement</h2>
+            <p>En cas de non-renouvellement, vous serez retiré du canal.</p>
+
+            <h2>7. Comportement des utilisateurs</h2>
+            <p>Il est interdit de partager ou revendre les contenus sans autorisation.</p>
+
+            <h2>8. Modifications des conditions</h2>
+            <p>Nous pouvons modifier ces conditions à tout moment.</p>
+
+            <h2>9. Responsabilités</h2>
+            <p>Nous ne garantissons pas un accès ininterrompu aux services.</p>
+
+            <h2>10. Données personnelles</h2>
+            <p>Vos données sont traitées conformément à notre politique de confidentialité.</p>
+
+            <h2>11. Droit applicable</h2>
+            <p>Les litiges sont soumis à la juridiction compétente.</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 QUEEN ANNA. Tous droits réservés.
+    </footer>
+
+    <!-- Script du menu -->
+    <script>
+        const menuButton = document.getElementById("menuButton");
+        const menuDropdown = document.getElementById("menuDropdown");
+        const closeMenu = document.getElementById("closeMenu");
+
+        menuButton.addEventListener("click", () => {
+            menuDropdown.style.display = "flex";
+            setTimeout(() => menuDropdown.classList.add("menu-open"), 10);
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!menuDropdown.contains(event.target) && event.target !== menuButton) {
+                menuDropdown.classList.remove("menu-open");
+                setTimeout(() => (menuDropdown.style.display = "none"), 300);
+            }
+        });
+
+        closeMenu.addEventListener("click", () => {
+            menuDropdown.classList.remove("menu-open");
+            setTimeout(() => (menuDropdown.style.display = "none"), 300);
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                menuDropdown.classList.remove("menu-open");
+                setTimeout(() => (menuDropdown.style.display = "none"), 300);
+            }
+        });
+    </script>
+
+</body>
+</html>
 
