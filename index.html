@@ -10,9 +10,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <title>🍑 Le Coin Premium d'Anna 💗 - Anna Morelle</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
-    
-    <!-- Favicon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon32.png">
     <link rel="icon" type="image/png" sizes="48x48" href="/static/favicon48.png">
@@ -20,117 +18,143 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/static/favicon192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/static/favicon512.png">
     <link rel="manifest" href="/static/site.webmanifest">
-
     <style>
-        /* Styles pour le menu */
-        .menu-container {
+        html, body {
+            overflow: hidden;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+        }
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .menu {
             position: absolute;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 10;
         }
-        .menu-button {
+        .menu a {
+            color: white;
+            font-size: 1rem;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .menu a:hover {
+            text-decoration: underline;
+        }
+        .image-container {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+            margin-top: 50px;
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #ffbc00);
+            padding: 8px;
+            box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1);
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .social-icons a {
+            color: white;
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+        .verified-badge {
+            width: 25px;
+            height: 25px;
+        }
+        .info-line {
+            color: gray;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        .intro-text {
+            font-size: 0.75rem;
+            line-height: 1.4;
+            max-width: 70%;
+            margin: 10px auto;
+            word-wrap: break-word;
+        }
+        @keyframes pulsing {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 127, 0.6); }
+            50% { transform: scale(1.1); box-shadow: 0 0 25px rgba(255, 0, 127, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 127, 0.6); }
+        }
+        .subscribe-btn {
             background-color: #ff007f;
             padding: 10px 20px;
             border-radius: 8px;
+            text-decoration: none;
             color: white;
             font-size: 1rem;
             font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease;
+            display: inline-block;
+            margin-top: 5px;
+            animation: pulsing 1.5s infinite;
         }
-        .menu-button:hover {
+        .subscribe-btn:hover {
             background-color: #e6006c;
+            animation: none;
         }
-        .menu-content {
-            display: none;
+        footer {
             position: absolute;
-            top: 100%;
+            bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
-            background: #222;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .menu-content a {
-            display: block;
-            color: white;
-            padding: 5px 0;
+            color: gray;
+            font-size: 0.8rem;
             text-align: center;
-        }
-        .menu-content a:hover {
-            color: #ff007f;
-        }
-        .show-menu {
-            display: block;
+            width: 100%;
         }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
-
-    <!-- Menu -->
-    <div class="menu-container">
-        <button class="menu-button" onclick="toggleMenu()">Menu</button>
-        <div class="menu-content" id="menuContent">
-            <a href="/">Accueil</a>
-            <a href="/conditions-generales">Conditions de service</a>
-            <a href="/politiques-de-confidentialite">Avis de confidentialité</a>
-            <a href="/politique-de-remboursement">Politiques de remboursement</a>
-            <a href="/contact">Contact</a>
-            <a href="/faq">FAQ</a>
-        </div>
-    </div>
-
+    <nav class="menu">
+        <a href="#">Accueil</a>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+    </nav>
     <div class="container">
-        <!-- Photo avec bordure dégradée autour -->
         <div class="image-container">
             <img src="/static/influenceuse.png" alt="Influenceuse IA">
         </div>
-        
-        <!-- Icônes des réseaux sociaux -->
         <div class="social-icons">
             <a href="https://t.me/+jtyRj1IY9Gs0ZGM8" target="_blank" class="fab fa-telegram"></a>
             <a href="https://www.instagram.com/ladymorellee" target="_blank" class="fab fa-instagram"></a>
             <a href="https://x.com/aannagram" target="_blank" class="fab fa-twitter"></a>
             <a href="https://youtube.com/@aannagram" target="_blank" class="fab fa-youtube"></a>
         </div>
-
-        <!-- Nom et badge -->
-        <h1 class="text-2xl font-bold mt-3 inline-flex items-center gap-2">
-            Anna Morelle
+        <h1 class="text-2xl font-bold mt-3 inline-flex items-center gap-2">Anna Morelle
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Vérifié" class="verified-badge">
         </h1>
-
-        <!-- Info -->
         <div class="info-line">
-            <span class="city">Paris, France </span> • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong>
+            <span class="city">Paris, France</span> • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong>
         </div>
-
-        <!-- Texte d'introduction -->
-        <p class="intro-text">
-            Prêt à découvrir un univers exclusif ? ✨ Chaque jour, profite de contenus uniques et immersifs 🔥. Laisse-toi emporter par l’expérience et vis des moments intenses 😏. Rejoins-moi maintenant ❤️.
-        </p>
-
-        <!-- Bouton d'abonnement -->
-        <a href="https://t.me/annaverifybot" class="subscribe-btn">
-            S’abonner maintenant
-        </a>
+        <p class="intro-text">Prêt à découvrir un univers exclusif ? ✨ Rejoins-moi maintenant ❤️.</p>
+        <a href="https://t.me/annaverifybot" class="subscribe-btn">S’abonner maintenant</a>
     </div>
-
-    <!-- Pied de page -->
-    <footer>
-        <div class="footer-text">
-            © 2025 - Anna Morelle
-        </div>
-    </footer>
-
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menuContent");
-            menu.classList.toggle("show-menu");
-        }
-    </script>
+    <footer>© 2025 - Anna Morelle</footer>
 </body>
 </html>
