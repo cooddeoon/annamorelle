@@ -25,6 +25,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
 
     <style>
+        /* Styles globaux */
         html, body {
             margin: 0;
             padding: 0;
@@ -36,7 +37,7 @@
             flex-direction: column;
         }
 
-        /* Header / Menu */
+        /* Styles du menu fixe */
         .menu-container {
             background: black;
             padding: 15px;
@@ -80,7 +81,28 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* Formulaire de contact */
+        #menuDropdown ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        #menuDropdown li {
+            margin: 10px 0;
+        }
+
+        #menuDropdown a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        #menuDropdown a:hover {
+            color: #ff007f;
+        }
+
+        /* Contenu principal */
         .container {
             flex-grow: 1;
             display: flex;
@@ -92,37 +114,30 @@
             margin-top: 80px;
         }
 
-        .contact-form {
-            max-width: 600px;
-            width: 100%;
-            background-color: #222;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        h1 {
+            color: #ff007f;
         }
 
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #444;
-            border-radius: 5px;
-            background-color: #333;
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .social-links a {
             color: white;
+            font-size: 24px;
+            transition: color 0.3s;
         }
 
-        .contact-form input[type="submit"] {
-            background-color: #ff007f;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
+        .social-links a:hover {
+            color: #ff007f;
         }
 
-        .contact-form input[type="submit"]:hover {
-            background-color: #ff3399;
+        .email-link {
+            margin-top: 20px;
+            font-size: 18px;
         }
 
         footer {
@@ -155,17 +170,18 @@
 
     <!-- Contenu principal -->
     <div class="container">
-        <h1>Contactez-nous</h1>
-        <p>Si vous avez des questions ou des demandes, n'hésitez pas à nous envoyer un message. Nous vous répondrons dans les plus brefs délais.</p>
+        <h1>Contactez-moi</h1>
+        
+        <div class="social-links">
+            <a href="https://t.me/tonUsernameTelegram" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://instagram.com/tonUsernameInstagram" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/tonUsernameTwitter" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://youtube.com/channel/tonChannelYouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
 
-        <!-- Formulaire de contact -->
-        <form action="/envoyer-message" method="POST" class="contact-form">
-            <input type="text" name="nom" placeholder="Votre Nom" required>
-            <input type="email" name="email" placeholder="Votre Email" required>
-            <input type="text" name="sujet" placeholder="Sujet" required>
-            <textarea name="message" placeholder="Votre Message" rows="5" required></textarea>
-            <input type="submit" value="Envoyer le message">
-        </form>
+        <div class="email-link">
+            <p>Vous pouvez aussi me contacter par email à : <a href="mailto:tonadresse@mail.com" class="text-pink-500">tonadresse@mail.com</a></p>
+        </div>
     </div>
 
     <footer>
@@ -209,4 +225,3 @@
 
 </body>
 </html>
-
