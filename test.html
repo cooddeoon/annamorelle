@@ -74,19 +74,20 @@
     display: none;
     position: absolute; /* Positionné absolument par rapport à la menu-container */
     top: 60px; /* Distance sous le bouton */
-    left: 0;
+    left: 50%; /* Centre le menu */
+    transform: translateX(-50%) translateY(-20px); /* Centre le menu horizontalement et commence légèrement au-dessus */
     width: 250px;
     background: rgba(0, 0, 0, 0.95);
     box-shadow: 0 5px 10px rgba(255, 0, 127, 0.3);
     padding: 20px;
     flex-direction: column;
     align-items: center;
-    transform: translateY(-20px); /* Commence légèrement au-dessus du bouton */
     transition: transform 0.3s ease-in-out;
 }
-        #menuDropdown.menu-open {
+
+#menuDropdown.menu-open {
     display: flex;
-    transform: translateY(0); /* Glisse vers le bas */
+    transform: translateX(-50%) translateY(0); /* Glisse vers le bas tout en restant centré */
 }
 
 #menuDropdown ul {
