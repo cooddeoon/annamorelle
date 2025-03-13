@@ -11,21 +11,6 @@
     <title>🍑 Le Coin Premium d'Anna 💗 - Anna Morelle</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
-    
-    <!-- Favicon standard -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="/static/favicon48.png">
-
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon180.png">
-
-    <!-- Android Chrome -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/static/favicon192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/static/favicon512.png">
-
-    <!-- Manifest pour Web App -->
-    <link rel="manifest" href="/static/site.webmanifest">
 
     <style>
         /* Empêcher tout défilement */
@@ -34,7 +19,7 @@
             height: 100vh;
             margin: 0;
             padding: 0;
-            background-color: #111; /* Fond sombre pour faire ressortir la bordure */
+            background-color: #111;
         }
 
         /* Conteneur principal */
@@ -48,18 +33,18 @@
             text-align: center;
         }
 
-        /* Image de profil avec bordure dégradée autour */
+        /* Image de profil avec bordure dégradée */
         .image-container {
-            width: 250px; /* Taille de l'image */
+            width: 250px;
             height: 250px;
             border-radius: 50%;
             position: relative;
             overflow: hidden;
-            margin-bottom: 40px; /* Moins d'espace en dessous */
-            margin-top: -10px; /* Remonté légèrement */
-            background: linear-gradient(45deg, #ff0080, #ff8c00, #ffbc00); /* Dégradé rose, orange, jaune */
-            padding: 8px; /* Espace entre l'image et la bordure */
-            box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1); /* Ombre légère autour de la bordure */
+            margin-bottom: 40px;
+            margin-top: -10px;
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #ffbc00);
+            padding: 8px;
+            box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1);
         }
 
         .image-container img {
@@ -86,45 +71,7 @@
             transform: scale(1.1);
         }
 
-        /* Badge de vérification */
-        .verified-badge {
-            width: 25px;
-            height: 25px;
-        }
-
-        /* Infos */
-        .info-line {
-            color: gray;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-
-        /* Texte d'introduction */
-        .intro-text {
-            font-size: 0.75rem;
-            line-height: 1.4;
-            max-width: 70%;
-            margin: 10px auto;
-            word-wrap: break-word;
-        }
-
-        /* Animation Pulsing */
-        @keyframes pulsing {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 15px rgba(0, 120, 255, 0.6);
-            }
-            50% {
-                transform: scale(1.1);
-                box-shadow: 0 0 25px rgba(0, 120, 255, 0.8);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 15px rgba(0, 120, 255, 0.6);
-            }
-        }
-
-        /* Application de l'effet pulsing au bouton d'abonnement */
+        /* Bouton d'abonnement */
         .subscribe-btn {
             background-color: #ff007f;
             padding: 10px 20px;
@@ -136,85 +83,102 @@
             display: inline-block;
             margin-top: 5px;
             transition: background 0.3s ease;
-            animation: pulsing 1.5s infinite; /* Ajoute l'animation pulsing ici */
+            animation: pulsing 1.5s infinite;
         }
 
         .subscribe-btn:hover {
             background-color: #e6006c;
-            animation: none; /* Arrête l'animation quand le bouton est survolé */
+            animation: none;
         }
 
-        /* Pied de page fixe */
-        footer {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: gray;
-            font-size: 0.8rem;
-            text-align: center;
+        /* Menu déroulant */
+        .menu-container {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-        }
-
-        /* Ajouter une couleur jaune pour Paris, France */
-        .city {
-            color: #facc15; /* Couleur jaune de Tailwind CSS (amber-400) */
-        }
-
-        /* Style pour le pied de page */
-        .footer-links {
-            display: flex;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
+            z-index: 100;
         }
 
-        .footer-links a {
-            color: gray;
+        .menu-content {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-content a {
+            display: block;
+            color: white;
+            font-size: 1.2rem;
+            padding: 10px 0;
             text-decoration: none;
         }
 
-        .footer-links a:hover {
-            color: white;
+        .menu-content a:hover {
+            color: #ff007f;
         }
 
-        /* Ajout d'un espacement entre le texte "© 2025" et les liens */
-        .footer-text {
-            margin-bottom: -10px; /* Espace supplémentaire entre le texte et les liens */
-            margin-top: 10px; /* Espace supplémentaire au-dessus de "© 2025 - Anna Morelle" */
+        .menu-open .menu-content {
+            transform: scale(1);
+            opacity: 1;
         }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
 
+    <!-- Bouton Menu -->
+    <div class="absolute top-5 left-5 z-50">
+        <button id="menuButton" class="text-white bg-pink-500 px-4 py-2 rounded-lg focus:outline-none">
+            ☰ Menu
+        </button>
+    </div>
+
+    <!-- Menu déroulant -->
+    <div id="menuDropdown" class="menu-container">
+        <div class="menu-content">
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/conditions-generales">Conditions</a></li>
+                <li><a href="/politiques-de-confidentialite">Confidentialité</a></li>
+                <li><a href="/politique-de-remboursement">Remboursement</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/faq">FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+
     <div class="container">
-        <!-- Photo avec bordure dégradée autour -->
+        <!-- Photo avec bordure -->
         <div class="image-container">
             <img src="/static/influenceuse.png" alt="Influenceuse IA">
         </div>
-        
-        <!-- Icônes des réseaux sociaux dans l'ordre souhaité -->
+
+        <!-- Icônes des réseaux sociaux -->
         <div class="social-icons">
-            <a href="https://t.me/+jtyRj1IY9Gs0ZGM8" target="_blank" class="fab fa-telegram"></a> <!-- Telegram -->
-            <a href="https://www.instagram.com/ladymorellee" target="_blank" class="fab fa-instagram"></a> <!-- Instagram -->
-            <a href="https://x.com/aannagram" target="_blank" class="fab fa-twitter"></a> <!-- Twitter -->
-            <a href="https://youtube.com/@aannagram" target="_blank" class="fab fa-youtube"></a> <!-- YouTube -->
+            <a href="https://t.me/+jtyRj1IY9Gs0ZGM8" target="_blank" class="fab fa-telegram"></a>
+            <a href="https://www.instagram.com/ladymorellee" target="_blank" class="fab fa-instagram"></a>
+            <a href="https://x.com/aannagram" target="_blank" class="fab fa-twitter"></a>
+            <a href="https://youtube.com/@aannagram" target="_blank" class="fab fa-youtube"></a>
         </div>
 
-        <!-- Nom et badge -->
-        <h1 class="text-2xl font-bold mt-3 inline-flex items-center gap-2">
-            Anna Morelle
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Vérifié" class="verified-badge">
-        </h1>
+        <!-- Nom -->
+        <h1 class="text-2xl font-bold mt-3">Anna Morelle</h1>
 
-        <!-- Info -->
-        <div class="info-line">
-            <span class="city">Paris, France </span> • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong>
-        </div>
+        <!-- Infos -->
+        <div class="text-gray-400">Paris, France • Fans: <strong>94</strong> • Suiveurs: <strong>329</strong></div>
 
-        <!-- Texte d'introduction -->
-        <p class="intro-text">
-          Prêt à découvrir un univers exclusif ? ✨ Chaque jour, profite de contenus uniques et immersifs 🔥. Laisse-toi emporter par l’expérience et vis des moments intenses 😏. Rejoins-moi maintenant ❤️.
+        <!-- Texte intro -->
+        <p class="text-sm mt-2">
+            Prêt à découvrir un univers exclusif ? ✨ Profite de contenus uniques et immersifs 🔥.
         </p>
 
         <!-- Bouton d'abonnement -->
@@ -223,12 +187,23 @@
         </a>
     </div>
 
-    <!-- Pied de page -->
-    <footer>
-        <div class="footer-text">
-            © 2025 - Anna Morelle
-        </div>
-    </footer>
+    <!-- Script du menu -->
+    <script>
+        const menuButton = document.getElementById("menuButton");
+        const menuDropdown = document.getElementById("menuDropdown");
+
+        menuButton.addEventListener("click", () => {
+            menuDropdown.style.display = "flex";
+            setTimeout(() => menuDropdown.classList.add("menu-open"), 10);
+        });
+
+        menuDropdown.addEventListener("click", (event) => {
+            if (event.target === menuDropdown) {
+                menuDropdown.classList.remove("menu-open");
+                setTimeout(() => menuDropdown.style.display = "none", 300);
+            }
+        });
+    </script>
 
 </body>
 </html>
